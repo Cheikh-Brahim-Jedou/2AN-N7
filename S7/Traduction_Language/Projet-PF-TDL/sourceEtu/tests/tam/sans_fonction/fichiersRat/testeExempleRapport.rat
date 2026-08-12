@@ -1,0 +1,9 @@
+enum Couleur { Rouge , Vert , Bleu };
+main {
+ Couleur c = Rouge ;
+ if ( c = Vert ) {
+ print 1;
+ } else {
+ print 0;
+ }
+}

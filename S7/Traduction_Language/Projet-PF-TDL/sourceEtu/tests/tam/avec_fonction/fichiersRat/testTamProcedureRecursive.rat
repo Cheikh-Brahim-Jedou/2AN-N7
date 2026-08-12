@@ -1,0 +1,13 @@
+void compterRec(int actuel, int max){
+  if (actuel = max) {
+    return;
+  } else {
+    print actuel;
+    compterRec((actuel + 1), max);
+    return;
+  }
+}
+
+main {
+  compterRec(0, 4);
+}

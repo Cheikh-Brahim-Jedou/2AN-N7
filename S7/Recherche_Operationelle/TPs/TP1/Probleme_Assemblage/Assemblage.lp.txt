@@ -1,0 +1,20 @@
+\* Problem: Assemblage *\
+
+Maximize
+Benefice: 650 Cargo + 250 Standard 
+
+Subject To
+CapaciteparHeur : 13 Cargo + 11 Standard <= 4000
+CapacitedeParking : 3.5 Cargo + 1.5 Standard <= 2000
+CapacitedeAssemblage : Cargo<=750
+
+
+\* To declare integer variables :   
+Integer 
+Cargo
+Standard  
+
+
+End
+
+

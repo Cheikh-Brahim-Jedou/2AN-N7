@@ -1,0 +1,9 @@
+enum Statut {Actif, Inactif, EnAttente};
+
+int getCode(Statut s){
+  return 0;
+}
+
+main{
+  int code = getCode(Actif);
+}

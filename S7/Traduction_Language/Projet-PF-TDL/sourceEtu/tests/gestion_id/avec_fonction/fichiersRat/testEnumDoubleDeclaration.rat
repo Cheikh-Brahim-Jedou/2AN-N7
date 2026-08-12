@@ -1,0 +1,10 @@
+enum Statut { Actif, Inactif };
+enum Statut { Ok, Erreur };
+
+int tester() {
+  return 0;
+}
+
+main {
+  int r = tester();
+}

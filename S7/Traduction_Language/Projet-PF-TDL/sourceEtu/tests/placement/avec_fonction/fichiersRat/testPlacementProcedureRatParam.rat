@@ -1,0 +1,9 @@
+void afficher(rat r){
+  print r;
+  return;
+}
+
+main {
+  rat x = [3/4];
+  afficher(x);
+}

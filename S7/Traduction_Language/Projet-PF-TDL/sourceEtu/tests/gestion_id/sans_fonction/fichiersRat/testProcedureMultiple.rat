@@ -1,0 +1,20 @@
+void a(){
+  print 1;
+  return;
+}
+
+void b(){
+  print 2;
+  return;
+}
+
+void c(){
+  print 3;
+  return;
+}
+
+main {
+  a();
+  b();
+  c();
+}

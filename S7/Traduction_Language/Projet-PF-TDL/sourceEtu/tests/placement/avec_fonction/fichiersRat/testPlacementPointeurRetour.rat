@@ -1,0 +1,8 @@
+int* allouer() {
+  int* p = (new int);
+  return p;
+}
+
+main {
+  int* q = allouer();
+}

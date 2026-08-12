@@ -1,0 +1,5 @@
+main {
+  int* p = null;
+  bool* q = null;
+  rat* r = null;
+}

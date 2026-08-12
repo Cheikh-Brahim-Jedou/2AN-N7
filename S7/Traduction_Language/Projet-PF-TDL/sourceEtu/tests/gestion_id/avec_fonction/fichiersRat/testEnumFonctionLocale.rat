@@ -1,0 +1,10 @@
+enum Niveau { Facile, Moyen, Difficile };
+
+int calculer() {
+  Niveau n = Facile;
+  return 0;
+}
+
+main {
+  int r = calculer();
+}

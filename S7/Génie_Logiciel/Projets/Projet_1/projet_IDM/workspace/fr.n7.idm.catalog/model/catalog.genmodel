@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/fr.n7.idm.catalog/src" modelPluginID="fr.n7.idm.catalog"
+    modelName="Catalog" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="17.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>catalog.ecore</foreignModel>
+  <genPackages prefix="Catalog" disposableProviderFactory="true" ecorePackage="catalog.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="catalog.ecore#//FormeFigure">
+      <genEnumLiterals ecoreEnumLiteral="catalog.ecore#//FormeFigure/RECTANGLE"/>
+      <genEnumLiterals ecoreEnumLiteral="catalog.ecore#//FormeFigure/CERCLE"/>
+      <genEnumLiterals ecoreEnumLiteral="catalog.ecore#//FormeFigure/PERSONNALISE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="catalog.ecore#//TypePort">
+      <genEnumLiterals ecoreEnumLiteral="catalog.ecore#//TypePort/ENTREE"/>
+      <genEnumLiterals ecoreEnumLiteral="catalog.ecore#//TypePort/SORTIE"/>
+      <genEnumLiterals ecoreEnumLiteral="catalog.ecore#//TypePort/BIDIRECTIONNEL"/>
+      <genEnumLiterals ecoreEnumLiteral="catalog.ecore#//TypePort/ALIMENTATION"/>
+      <genEnumLiterals ecoreEnumLiteral="catalog.ecore#//TypePort/MASSE"/>
+      <genEnumLiterals ecoreEnumLiteral="catalog.ecore#//TypePort/NON_CONNECTE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="catalog.ecore#//TypeMetadonnee">
+      <genEnumLiterals ecoreEnumLiteral="catalog.ecore#//TypeMetadonnee/TEXTE"/>
+      <genEnumLiterals ecoreEnumLiteral="catalog.ecore#//TypeMetadonnee/NOMBRE"/>
+      <genEnumLiterals ecoreEnumLiteral="catalog.ecore#//TypeMetadonnee/BOOLEEN"/>
+    </genEnums>
+    <genClasses ecoreClass="catalog.ecore#//Catalogue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//Catalogue/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//Catalogue/composants"/>
+    </genClasses>
+    <genClasses ecoreClass="catalog.ecore#//Composant">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//Composant/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//Composant/fabricant"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//Composant/metadonnees"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//Composant/empreinte"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//Composant/ports"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//Composant/id"/>
+    </genClasses>
+    <genClasses ecoreClass="catalog.ecore#//Metadonnee">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//Metadonnee/cle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//Metadonnee/valeur"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//Metadonnee/type"/>
+    </genClasses>
+    <genClasses ecoreClass="catalog.ecore#//Empreinte">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//Empreinte/largeur"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//Empreinte/hauteur"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//Empreinte/forme"/>
+    </genClasses>
+    <genClasses ecoreClass="catalog.ecore#//Port">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//Port/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//Port/x"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//Port/y"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//Port/type"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

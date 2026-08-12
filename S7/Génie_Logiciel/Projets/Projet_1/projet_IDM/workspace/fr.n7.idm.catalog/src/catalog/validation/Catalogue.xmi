@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog:Catalogue xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:catalog="http://www.example.org/catalog" name="catalogn7">
+  <composants name="resistence" fabricant="halawa" id="id">
+    <metadonnees cle="resistence" valeur="10" type="NOMBRE"/>
+    <ports name="Pin1" y="0.65" type="BIDIRECTIONNEL"/>
+  </composants>
+  <composants name="resistence" fabricant="hahaha" id="id">
+    <metadonnees cle="residence" valeur="hala" type="NOMBRE"/>
+    <metadonnees cle="residence2" valeur="12" type="NOMBRE"/>
+  </composants>
+</catalog:Catalogue>

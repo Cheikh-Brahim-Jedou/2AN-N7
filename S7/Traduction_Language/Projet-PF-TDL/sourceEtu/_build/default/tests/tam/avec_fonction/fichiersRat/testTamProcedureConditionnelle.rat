@@ -1,0 +1,14 @@
+void afficherSigne(int x){
+  if (x < 0) {
+    print 0;
+    return;
+  } else {
+    print 1;
+    return;
+  }
+}
+
+main {
+  afficherSigne(-5);
+  afficherSigne(5);
+}

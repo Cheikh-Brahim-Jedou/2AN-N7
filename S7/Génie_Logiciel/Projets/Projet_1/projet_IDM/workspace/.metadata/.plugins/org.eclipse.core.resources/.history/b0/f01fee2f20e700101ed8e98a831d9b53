@@ -1,0 +1,342 @@
+package netlist.validation;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import netlist.*;
+import netlist.util.NetlistSwitch;
+import catalog.TypePort;
+
+/**
+ * Validateur pour les modèles Netlist.
+ * Vérifie les contraintes de cohérence, nommage et connexions électriques.
+ *
+ * @author Oussama
+ * @version 1.0
+ */
+public class NetlistValidator extends NetlistSwitch<Boolean> {
+   
+    /** Expression régulière pour un identifiant valide */
+    private static final String IDENT_REGEX = "^[A-Za-z_][A-Za-z0-9_]*$";
+   
+    /** Résultat de la validation */
+    private ValidationResult result = null;
+   
+    /**
+     * Constructeur
+     */
+    public NetlistValidator() {}
+   
+    /**
+     * Lance la validation d'une ressource.
+     * @param resource ressource à valider
+     * @return résultat de validation
+     */
+    public ValidationResult validate(Resource resource) {
+        this.result = new ValidationResult();
+       
+        for (EObject object : resource.getContents()) {
+            this.doSwitch(object);
+        }
+       
+        return this.result;
+    }
+   
+    /**
+     * Validation d'une Netlist.
+     */
+    @Override
+    public Boolean caseNetlist(Netlist object) {
+        // N1.1 : Nom non vide
+        this.result.recordIfFailed(
+            object.getName() != null && !object.getName().isEmpty(),
+            object,
+            "Le nom de la netlist ne doit pas être vide"
+        );
+       
+        // N1.2 : Nom valide
+        this.result.recordIfFailed(
+            object.getName() != null && object.getName().matches(IDENT_REGEX),
+            object,
+            "Le nom de la netlist ne respecte pas les conventions (identifiant valide)"
+        );
+       
+        // N1.3 : Au moins une instance
+        this.result.recordIfFailed(
+            object.getInstances().size() > 0,
+            object,
+            "Une netlist doit contenir au moins un composant"
+        );
+       
+        // Visiter les instances
+        for (InstanceComposant inst : object.getInstances()) {
+            this.doSwitch(inst);
+        }
+       
+        // Visiter les nets
+        for (Net net : object.getNets()) {
+            this.doSwitch(net);
+        }
+       
+        // Visiter les commentaires
+        for (Commentaire com : object.getCommentaires()) {
+            this.doSwitch(com);
+        }
+       
+        // Vérifications globales
+        verifierInstancesUtilisees(object);
+        verifierNetsAlimentationMasse(object);
+       
+        return null;
+    }
+   
+    /**
+     * Validation d'une InstanceComposant.
+     */
+    @Override
+    public Boolean caseInstanceComposant(InstanceComposant object) {
+        // N2.1 : ID non vide
+        this.result.recordIfFailed(
+            object.getId() != null && !object.getId().isEmpty(),
+            object,
+            "L'ID de l'instance ne doit pas être vide"
+        );
+       
+        // N2.2 : ID valide
+        this.result.recordIfFailed(
+            object.getId() != null && object.getId().matches(IDENT_REGEX),
+            object,
+            "L'ID de l'instance ne respecte pas les conventions (ex: R1, IC1, C_FILTER_01)"
+        );
+       
+        // N2.3 : ID unique dans la Netlist
+        Netlist netlist = (Netlist) object.eContainer();
+        if (netlist != null) {
+            long count = netlist.getInstances().stream()
+                .filter(i -> i.getId() != null && i.getId().equals(object.getId()))
+                .count();
+           
+            this.result.recordIfFailed(
+                count == 1,
+                object,
+                "L'ID '" + object.getId() + "' est utilisé plusieurs fois dans la netlist"
+            );
+        }
+       
+        // N2.4 : Référence vers Composant valide
+        this.result.recordIfFailed(
+            object.getComposant() != null,
+            object,
+            "L'instance doit référencer un composant du catalogue"
+        );
+       
+        // Visiter les connexions
+        for (Connexion c : object.getConnexions()) {
+            this.doSwitch(c);
+        }
+       
+        return null;
+    }
+   
+    /**
+     * Validation d'un Reseau (Net).
+     */
+    @Override
+    public Boolean caseNet(Net object) {
+        // N3.1 : Nom non vide
+        this.result.recordIfFailed(
+            object.getName() != null && !object.getName().isEmpty(),
+            object,
+            "Le nom du net ne doit pas être vide"
+        );
+       
+        // N3.2 : Nom valide
+        this.result.recordIfFailed(
+            object.getName() != null && object.getName().matches(IDENT_REGEX),
+            object,
+            "Le nom du net ne respecte pas les conventions (ex: VCC, GND, SIGNAL_1)"
+        );
+       
+        // N3.3 : Nom unique dans la Netlist
+        Netlist netlist = (Netlist) object.eContainer();
+        if (netlist != null) {
+            long count = netlist.getReseaux().stream()
+                .filter(n -> n.getName() != null && n.getName().equals(object.getName()))
+                .count();
+           
+            this.result.recordIfFailed(
+                count == 1,
+                object,
+                "Le net '" + object.getName() + "' est défini plusieurs fois dans la netlist"
+            );
+        }
+       
+        // N3.4 : Un Net doit avoir au moins 2 connexions
+        this.result.recordIfFailed(
+            object.getConnexions().size() >= 2,
+            object,
+            "Le net '" + object.getName() + "' doit connecter au moins 2 ports (actuellement: "
+            + object.getConnexions().size() + ")"
+        );
+       
+        // N6.1 : Vérifier pas de conflit SORTIE-SORTIE
+        verifierConflitSorties(object);
+       
+        return null;
+    }
+   
+    /**
+     * Validation d'une Connexion.
+     */
+    @Override
+    public Boolean caseConnexion(Connexion object) {
+        // N4.1 : Port existe
+        this.result.recordIfFailed(
+            object.getPort() != null,
+            object,
+            "La connexion doit référencer un port"
+        );
+       
+        // N4.2 : Net existe
+        this.result.recordIfFailed(
+            object.getReseau() != null,
+            object,
+            "La connexion doit référencer un net"
+        );
+       
+        // N4.3 : Port appartient au Composant de l'Instance
+        InstanceComposant instance = (InstanceComposant) object.eContainer();
+        if (instance != null && instance.getComposant() != null && object.getPort() != null) {
+            boolean portAppartient = instance.getComposant().getPorts()
+                .contains(object.getPort());
+           
+            this.result.recordIfFailed(
+                portAppartient,
+                object,
+                "Le port '" + object.getPort().getName()
+                + "' n'appartient pas au composant '"
+                + instance.getComposant().getName() + "'"
+            );
+        }
+       
+        // N4.4 : Pas de connexions dupliquées
+        if (instance != null && object.getPort() != null && object.getReseau() != null) {
+            long count = instance.getConnexions().stream()
+                .filter(c -> c.getPort() != null && c.getPort().equals(object.getPort())
+                          && c.getReseau() != null && c.getReseau().equals(object.getReseau()))
+                .count();
+           
+            this.result.recordIfFailed(
+                count == 1,
+                object,
+                "Le port '" + object.getPort().getName() + "' de l'instance '"
+                + instance.getId() + "' est déjà connecté au net '"
+                + object.getReseau().getName() + "'"
+            );
+        }
+       
+        return null;
+    }
+   
+    /**
+     * Validation d'un Commentaire.
+     */
+    @Override
+    public Boolean caseCommentaire(Commentaire object) {
+        // N5.1 : Texte non vide
+        this.result.recordIfFailed(
+            object.getTexte() != null && !object.getTexte().isEmpty(),
+            object,
+            "Le texte du commentaire ne doit pas être vide"
+        );
+       
+        // N5.2 : Si cible définie, elle doit appartenir à la netlist
+        if (object.getCible() != null) {
+            Netlist netlist = (Netlist) object.eContainer();
+            if (netlist != null) {
+                EObject cible = object.getCible();
+                boolean valide = netlist.getInstances().contains(cible)
+                              || netlist.getReseaux().contains(cible)
+                              || cible.equals(netlist);
+               
+                this.result.recordIfFailed(
+                    valide,
+                    object,
+                    "La cible du commentaire n'appartient pas à cette netlist"
+                );
+            }
+        }
+       
+        return null;
+    }
+   
+    /**
+     * Vérifier qu'il n'y a pas plusieurs SORTIE sur le même net (conflit électrique).
+     */
+    private void verifierConflitSorties(Reseau net) {
+        long nbSorties = net.getConnexions().stream()
+            .filter(c -> c.getPort() != null && c.getPort().getType() == TypePort.SORTIE)
+            .count();
+       
+        if (nbSorties > 1) {
+            this.result.recordError(
+                net,
+                "CONFLIT : Le net '" + net.getName()
+                + "' connecte plusieurs sorties ensemble (" + nbSorties + " sorties)"
+            );
+        }
+    }
+   
+    /**
+     * Vérifier que toutes les instances sont utilisées (ont au moins une connexion).
+     */
+    private void verifierInstancesUtilisees(Netlist netlist) {
+        for (InstanceComposant inst : netlist.getInstances()) {
+            if (inst.getConnexions().isEmpty()) {
+                this.result.recordError(
+                    inst,
+                    "WARNING : L'instance '" + inst.getId()
+                    + "' n'a aucune connexion (composant flottant)"
+                );
+            }
+        }
+    }
+   
+    /**
+     * Vérifier qu'il existe des nets d'alimentation et de masse.
+     */
+    private void verifierNetsAlimentationMasse(Netlist netlist) {
+        boolean hasVCC = netlist.getReseaux().stream()
+            .anyMatch(n -> n.getName() != null
+                && (n.getName().equalsIgnoreCase("VCC")
+                 || n.getName().equalsIgnoreCase("VDD")
+                 || n.getName().equalsIgnoreCase("V+")));
+       
+        boolean hasGND = netlist.getReseaux().stream()
+            .anyMatch(n -> n.getName() != null
+                && (n.getName().equalsIgnoreCase("GND")
+                 || n.getName().equalsIgnoreCase("VSS")
+                 || n.getName().equalsIgnoreCase("GROUND")));
+       
+        if (!hasVCC) {
+            this.result.recordError(
+                netlist,
+                "WARNING : Aucun net d'alimentation détecté (VCC, VDD, V+)"
+            );
+        }
+       
+        if (!hasGND) {
+            this.result.recordError(
+                netlist,
+                "WARNING : Aucun net de masse détecté (GND, VSS, GROUND)"
+            );
+        }
+    }
+   
+    /**
+     * Cas par défaut.
+     */
+    @Override
+    public Boolean defaultCase(EObject object) {
+        return null;
+    }
+}

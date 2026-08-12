@@ -1,0 +1,67 @@
+enum Operation {Addition, Multiplication, Echange};
+
+void echanger (ref int x, ref int y){
+  int tmp = x;
+  x = y;
+  y = tmp;
+  return;
+}
+
+int * initialiserPointeur (int v){
+  int * p = (new int);
+  (*p) = v;
+  return p;
+}
+
+void appliquerOperation (Operation op, ref int x, ref int y){
+  if (op = Addition){
+    x = (x+y);
+  } else {
+    if (op = Multiplication){
+      x = (x*y);
+    } else {
+      if (op = Echange){
+        echanger(ref x, ref y);
+      } else {
+        print 0; // Instruction bidon pour le else vide
+      }
+    }
+  }
+  return ;
+}
+
+void afficherValeurPointee (int * p){
+  print (*p);
+  return ;
+}
+
+test{
+  int a = 10;
+  int b = 5;
+  int * p1 = &a;
+  int * p2 = &b;
+  int * p3 = initialiserPointeur (10);
+
+  // Etat initial : 10, 5, 10
+  afficherValeurPointee (p1);
+  afficherValeurPointee (p2);
+  afficherValeurPointee (p3);
+
+  // Addition (a = a+b = 15) : 15, 5, 10
+  appliquerOperation(Addition, ref a, ref b);
+  afficherValeurPointee (p1);
+  afficherValeurPointee (p2);
+  afficherValeurPointee (p3);
+
+  // Echange (a<->b => a=5, b=15) : 5, 15, 10
+  appliquerOperation(Echange, ref a, ref b);
+  afficherValeurPointee (p1);
+  afficherValeurPointee (p2);
+  afficherValeurPointee (p3);
+
+  // Multiplication (a = a*b => 5*15 = 75) : 75, 15, 10
+  appliquerOperation(Multiplication, ref a, ref b);
+  afficherValeurPointee (p1);
+  afficherValeurPointee (p2);
+  afficherValeurPointee (p3);
+}

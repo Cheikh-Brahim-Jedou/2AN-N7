@@ -1,0 +1,12 @@
+void echanger(ref int a, ref int b){
+  int tmp = a;
+  a = b;
+  b = tmp;
+  return;
+}
+
+main {
+  int x = 5;
+  int y = 10;
+  echanger(ref x, ref y);
+}

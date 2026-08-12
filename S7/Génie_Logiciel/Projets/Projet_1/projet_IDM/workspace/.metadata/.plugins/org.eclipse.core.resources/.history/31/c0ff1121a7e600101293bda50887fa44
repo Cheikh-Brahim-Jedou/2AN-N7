@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog:Catalogue
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:catalog="http://www.example.org/catalog"
+    name="">
+  <composants
+      name="resistence"
+      fabricant="halawa"
+      id="id"/>
+</catalog:Catalogue>

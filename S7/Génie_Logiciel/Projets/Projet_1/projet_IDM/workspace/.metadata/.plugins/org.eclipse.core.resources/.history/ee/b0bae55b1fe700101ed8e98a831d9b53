@@ -1,0 +1,87 @@
+
+import java.util.List;
+import java.util.Map;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import fr.n7.idm.netlist.NetlistPackage;
+
+/**
+ * Programme principal pour valider des fichiers .netlist
+ * 
+ * Usage: java ValidateNetlist fichier1.netlist fichier2.netlist ...
+ * 
+ * @author Oussama
+ * @version 1.0
+ */
+public class ValidateNetlist {
+    
+    /**
+     * Afficher une liste d'erreur avec un préfixe.
+     */
+    private static void afficherErreurs(String prefix, List<ValidationResult.ValidationError> errors) {
+        System.out.print(prefix + ": ");
+        if (errors.isEmpty()) {
+            System.out.println("OK");
+        } else {
+            System.out.println(errors.size() + " erreur(s) trouvée(s)");
+            for (ValidationResult.ValidationError error : errors) {
+                System.out.println("  => " + error.toString());
+            }
+        }
+    }
+    
+    /**
+     * Affiche les erreurs pour les divers éléments du méta-modèle.
+     */
+    private static void afficherResultat(ValidationResult resultat) {
+        afficherErreurs("- Netlist", resultat.getRecordedErrorsFor(NetlistPackage.NETLIST));
+        afficherErreurs("- InstanceComposant", resultat.getRecordedErrorsFor(NetlistPackage.INSTANCE_COMPOSANT));
+        afficherErreurs("- Reseau", resultat.getRecordedErrorsFor(NetlistPackage.RESEAU));
+        afficherErreurs("- Connexion", resultat.getRecordedErrorsFor(NetlistPackage.CONNEXION));
+        afficherErreurs("- Commentaire", resultat.getRecordedErrorsFor(NetlistPackage.COMMENTAIRE));
+    }
+    
+    /**
+     * Fonction principale.
+     */
+    public static void main(String... args) {
+        // Charger le méta-modèle
+        @SuppressWarnings("unused")
+        NetlistPackage packageInstance = NetlistPackage.eINSTANCE;
+        
+        // Enregistrer les extensions de fichiers
+        Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+        Map<String, Object> m = reg.getExtensionToFactoryMap();
+        m.put("xmi", new XMIResourceFactoryImpl());
+        m.put("netlist", new XMIResourceFactoryImpl());
+        
+        ResourceSet resSet = new ResourceSetImpl();
+        NetlistValidator validator = new NetlistValidator();
+        
+        for (String model : args) {
+            URI modelURI = URI.createURI(model);
+            Resource resource = resSet.getResource(modelURI, true);
+            ValidationResult resultat = validator.validate(resource);
+            
+            System.out.println("\n=== Validation de " + model + " ===");
+            afficherResultat(resultat);
+        }
+        
+        System.out.println("\nValidation terminée.");
+    }
+}
+```
+
+---
+
+# **Structure finale des packages**
+```
+fr.n7.idm.netlist/src/
+└── fr/n7/idm/netlist/validation/
+    ├── NetlistValidator.java      ← Validateur principal
+    ├── ValidationResult.java      ← Résultat de validation
+    ├── Utils.java                 ← Utilitaires
+    └── ValidateNetlist.java       ← Main pour tester

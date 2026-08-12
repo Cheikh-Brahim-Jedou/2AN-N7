@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<netlist:Netlist xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:netlist="http://www.example.org/netlist" name="divis_tension">
+  <instances>
+    <composant href="file:/home/oei8498/Anne_2/IDM/workspace/fr.n7.idm.catalog/Catalogue.xmi#//@composants.0"/>
+  </instances>
+</netlist:Netlist>

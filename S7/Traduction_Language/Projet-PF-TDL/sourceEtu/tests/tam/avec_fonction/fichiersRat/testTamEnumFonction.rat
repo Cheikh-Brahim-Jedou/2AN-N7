@@ -1,0 +1,25 @@
+enum Etat {Actif, Inactif};
+
+// Fonction qui inverse l'état
+Etat changer(Etat e) {
+  if (e = Actif) {
+    return Inactif;
+  } else {
+    return Actif;
+  }
+}
+
+test {
+  Etat e1 = Actif;
+  Etat e2 = changer(e1); // e2 devient Inactif (1)
+  
+  // Affiche 1 (Inactif)
+  print e2; 
+
+  // Vérifie si e2 est bien différent de e1
+  if (e1 = e2) {
+    print 1;
+  } else {
+    print 0; // Doit afficher 0
+  }
+}

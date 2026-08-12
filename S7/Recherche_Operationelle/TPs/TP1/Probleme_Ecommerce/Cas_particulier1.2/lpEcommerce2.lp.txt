@@ -1,0 +1,54 @@
+\* Problem: ecommerce2 *\
+
+Minimize
+ Cout: + 12 Q(1,M1,C1) + 4 Q(1,M1,C2) + 7 Q(1,M2,C1) + 15 Q(1,M2,C2)
+ + Q(1,M3,C1) + 20 Q(1,M3,C2) + 12 Q(2,M1,C1) + 4 Q(2,M1,C2)
+ + 7 Q(2,M2,C1) + 15 Q(2,M2,C2) + Q(2,M3,C1) + 20 Q(2,M3,C2)
+ + 100 Y(M1,C1) + 110 Y(M1,C2) + 120 Y(M2,C1) + 90 Y(M2,C2)
+ + 110 Y(M3,C1) + 100 Y(M3,C2)
+
+Subject To
+ RespectCapaciteDeStockMagasin(1,M1): + Q(1,M1,C1) + Q(1,M1,C2) <= 2.5
+ RespectCapaciteDeStockMagasin(1,M2): + Q(1,M2,C1) + Q(1,M2,C2) <= 3
+ RespectCapaciteDeStockMagasin(1,M3): + Q(1,M3,C1) + Q(1,M3,C2) <= 1
+ RespectCapaciteDeStockMagasin(2,M1): + Q(2,M1,C1) + Q(2,M1,C2) <= 1
+ RespectCapaciteDeStockMagasin(2,M2): + Q(2,M2,C1) + Q(2,M2,C2) <= 2
+ RespectCapaciteDeStockMagasin(2,M3): + Q(2,M3,C1) + Q(2,M3,C2) <= 3
+ RespectQuantiteArriveesCelleDemandees(1,C1): + Q(1,M1,C1) + Q(1,M2,C1)
+ + Q(1,M3,C1) = 1
+ RespectQuantiteArriveesCelleDemandees(1,C2): + Q(1,M1,C2) + Q(1,M2,C2)
+ + Q(1,M3,C2) = 3
+ RespectQuantiteArriveesCelleDemandees(2,C1): + Q(2,M1,C1) + Q(2,M2,C1)
+ + Q(2,M3,C1) = 1
+ RespectQuantiteArriveesCelleDemandees(2,C2): + Q(2,M1,C2) + Q(2,M2,C2)
+ + Q(2,M3,C2) = 1
+ LiasionVariableY(1,M1,C1): + Q(1,M1,C1) - 2.5 Y(M1,C1) <= -0
+ LiasionVariableY(1,M1,C2): + Q(1,M1,C2) - 2.5 Y(M1,C2) <= -0
+ LiasionVariableY(1,M2,C1): + Q(1,M2,C1) - 3 Y(M2,C1) <= -0
+ LiasionVariableY(1,M2,C2): + Q(1,M2,C2) - 3 Y(M2,C2) <= -0
+ LiasionVariableY(1,M3,C1): + Q(1,M3,C1) - Y(M3,C1) <= -0
+ LiasionVariableY(1,M3,C2): + Q(1,M3,C2) - Y(M3,C2) <= -0
+ LiasionVariableY(2,M1,C1): + Q(2,M1,C1) - Y(M1,C1) <= -0
+ LiasionVariableY(2,M1,C2): + Q(2,M1,C2) - Y(M1,C2) <= -0
+ LiasionVariableY(2,M2,C1): + Q(2,M2,C1) - 2 Y(M2,C1) <= -0
+ LiasionVariableY(2,M2,C2): + Q(2,M2,C2) - 2 Y(M2,C2) <= -0
+ LiasionVariableY(2,M3,C1): + Q(2,M3,C1) - 3 Y(M3,C1) <= -0
+ LiasionVariableY(2,M3,C2): + Q(2,M3,C2) - 3 Y(M3,C2) <= -0
+
+Bounds
+ 0 <= Y(M1,C1) <= 1
+ 0 <= Y(M1,C2) <= 1
+ 0 <= Y(M2,C1) <= 1
+ 0 <= Y(M2,C2) <= 1
+ 0 <= Y(M3,C1) <= 1
+ 0 <= Y(M3,C2) <= 1
+
+Generals
+ Y(M1,C1)
+ Y(M1,C2)
+ Y(M2,C1)
+ Y(M2,C2)
+ Y(M3,C1)
+ Y(M3,C2)
+
+End

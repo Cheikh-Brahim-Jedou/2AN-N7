@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout:Layout xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:layout="http://www.example.org/layout" name="layout" description="pcb">
+  <boards name="board1" hauteur="1.0">
+    <couches xsi:type="layout:Coucheexterne" name="couche_e1" numero="1">
+      <pistes largeur="2.0">
+        <net href="file:/home/oei8498/Anne_2/IDM/runtime-EclipseApplication/fr.n7.idm.tests/Mynetlist.xmi#//@nets.0"/>
+      </pistes>
+    </couches>
+    <couches xsi:type="layout:Coucheinterne"/>
+  </boards>
+  <netlist href="file:/home/oei8498/Anne_2/IDM/runtime-EclipseApplication/fr.n7.idm.tests/Mynetlist.xmi#/"/>
+</layout:Layout>

@@ -1,0 +1,10 @@
+void modifier(ref int* p){
+  (*p) = 42;
+  return;
+}
+
+main {
+  int x = 0;
+  int* p = &x;
+  modifier(ref p);
+}

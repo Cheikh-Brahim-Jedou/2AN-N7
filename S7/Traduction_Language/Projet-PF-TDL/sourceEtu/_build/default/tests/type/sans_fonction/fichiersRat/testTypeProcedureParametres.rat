@@ -1,0 +1,8 @@
+void afficherSomme(int a, int b){
+  print (a + b);
+  return;
+}
+
+main {
+  afficherSomme(10, 32);
+}

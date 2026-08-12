@@ -1,0 +1,9 @@
+enum Direction { Nord, Sud, Est, Ouest };
+
+Direction inverser(Direction d) {
+  return Sud;
+}
+
+main {
+  Direction d = inverser(Nord);
+}

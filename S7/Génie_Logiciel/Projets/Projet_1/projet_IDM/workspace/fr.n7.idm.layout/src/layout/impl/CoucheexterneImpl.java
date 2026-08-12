@@ -1,0 +1,150 @@
+/**
+ */
+package layout.impl;
+
+import java.util.Collection;
+
+import layout.ComposantPlace;
+import layout.Coucheexterne;
+import layout.LayoutPackage;
+
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Coucheexterne</b></em>'.
+ * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link layout.impl.CoucheexterneImpl#getComposantPlaces <em>Composant Places</em>}</li>
+ * </ul>
+ *
+ * @generated
+ */
+public class CoucheexterneImpl extends CoucheImpl implements Coucheexterne {
+	/**
+	 * The cached value of the '{@link #getComposantPlaces() <em>Composant Places</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getComposantPlaces()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ComposantPlace> composantPlaces;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CoucheexterneImpl() {
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return LayoutPackage.Literals.COUCHEEXTERNE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<ComposantPlace> getComposantPlaces() {
+		if (composantPlaces == null) {
+			composantPlaces = new EObjectContainmentEList<ComposantPlace>(ComposantPlace.class, this, LayoutPackage.COUCHEEXTERNE__COMPOSANT_PLACES);
+		}
+		return composantPlaces;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case LayoutPackage.COUCHEEXTERNE__COMPOSANT_PLACES:
+				return ((InternalEList<?>)getComposantPlaces()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case LayoutPackage.COUCHEEXTERNE__COMPOSANT_PLACES:
+				return getComposantPlaces();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case LayoutPackage.COUCHEEXTERNE__COMPOSANT_PLACES:
+				getComposantPlaces().clear();
+				getComposantPlaces().addAll((Collection<? extends ComposantPlace>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case LayoutPackage.COUCHEEXTERNE__COMPOSANT_PLACES:
+				getComposantPlaces().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case LayoutPackage.COUCHEEXTERNE__COMPOSANT_PLACES:
+				return composantPlaces != null && !composantPlaces.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
+
+} //CoucheexterneImpl

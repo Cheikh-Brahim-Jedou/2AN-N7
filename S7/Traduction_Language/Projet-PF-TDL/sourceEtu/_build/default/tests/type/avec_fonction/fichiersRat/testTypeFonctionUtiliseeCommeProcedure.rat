@@ -1,0 +1,7 @@
+int calculer(int x){
+  return (x + 1);
+}
+
+main {
+  calculer(5);
+}

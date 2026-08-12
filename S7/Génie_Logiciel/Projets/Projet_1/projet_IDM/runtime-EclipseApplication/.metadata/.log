@@ -1,0 +1,60 @@
+!SESSION 2026-01-02 17:31:52.707 -----------------------------------------------
+eclipse.buildId=4.29.0.20230907-1200
+java.version=17.0.17
+java.vendor=Ubuntu
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=fr_FR
+Framework arguments:  -product org.eclipse.epp.package.modeling.product
+Command-line arguments:  -product org.eclipse.epp.package.modeling.product -data /home/oei8498/Anne_2/IDM/workspace/../runtime-EclipseApplication -dev file:/home/oei8498/Anne_2/IDM/workspace/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os linux -ws gtk -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.ui.navigator 4 0 2026-01-02 17:37:55.612
+!MESSAGE Cannot find navigator content extension (using triggerPoints) for object "<null>" parent path: "P/fr.n7.idm.tests". Check that you have an expression for this object in a navigatorContent triggerPoints or enablement.
+!SESSION 2026-01-02 20:11:34.268 -----------------------------------------------
+eclipse.buildId=4.29.0.20230907-1200
+java.version=17.0.17
+java.vendor=Ubuntu
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=fr_FR
+Framework arguments:  -product org.eclipse.epp.package.modeling.product
+Command-line arguments:  -product org.eclipse.epp.package.modeling.product -data /home/oei8498/Anne_2/IDM/workspace/../runtime-EclipseApplication -dev file:/home/oei8498/Anne_2/IDM/workspace/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os linux -ws gtk -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.core.resources 2 10035 2026-01-02 20:11:41.047
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.core.jobs 4 2 2026-01-02 20:11:58.242
+!MESSAGE An internal error occurred during: "Re-resolve Target state after VM-Install or EE change".
+!STACK 0
+java.lang.IllegalArgumentException: Attempted to beginRule: MultiRule[], does not match outer scope rule: R/
+	at org.eclipse.core.runtime.Assert.isLegal(Assert.java:66)
+	at org.eclipse.core.internal.jobs.ThreadJob.illegalPush(ThreadJob.java:138)
+	at org.eclipse.core.internal.jobs.ThreadJob.push(ThreadJob.java:402)
+	at org.eclipse.core.internal.jobs.ImplicitJobs.begin(ImplicitJobs.java:93)
+	at org.eclipse.core.internal.jobs.JobManager.beginRule(JobManager.java:342)
+	at org.eclipse.core.internal.resources.WorkManager.checkIn(WorkManager.java:124)
+	at org.eclipse.core.internal.resources.Workspace.prepareOperation(Workspace.java:2403)
+	at org.eclipse.core.internal.resources.Project$1.run(Project.java:601)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2453)
+	at org.eclipse.core.internal.resources.Project.internalBuild(Project.java:642)
+	at org.eclipse.core.internal.resources.Project.build(Project.java:162)
+	at org.eclipse.pde.internal.core.MinimalState.reloadSystemPackagesIntoState(MinimalState.java:331)
+	at org.eclipse.pde.internal.core.MinimalState$2.runInWorkspace(MinimalState.java:304)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:43)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.jobs 4 2 2026-01-02 20:11:58.559
+!MESSAGE An internal error occurred during: "Re-resolve Target state after VM-Install or EE change".
+!STACK 0
+java.lang.IllegalArgumentException: Attempted to beginRule: MultiRule[], does not match outer scope rule: R/
+	at org.eclipse.core.runtime.Assert.isLegal(Assert.java:66)
+	at org.eclipse.core.internal.jobs.ThreadJob.illegalPush(ThreadJob.java:138)
+	at org.eclipse.core.internal.jobs.ThreadJob.push(ThreadJob.java:402)
+	at org.eclipse.core.internal.jobs.ImplicitJobs.begin(ImplicitJobs.java:93)
+	at org.eclipse.core.internal.jobs.JobManager.beginRule(JobManager.java:342)
+	at org.eclipse.core.internal.resources.WorkManager.checkIn(WorkManager.java:124)
+	at org.eclipse.core.internal.resources.Workspace.prepareOperation(Workspace.java:2403)
+	at org.eclipse.core.internal.resources.Project$1.run(Project.java:601)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2453)
+	at org.eclipse.core.internal.resources.Project.internalBuild(Project.java:642)
+	at org.eclipse.core.internal.resources.Project.build(Project.java:162)
+	at org.eclipse.pde.internal.core.MinimalState.reloadSystemPackagesIntoState(MinimalState.java:331)
+	at org.eclipse.pde.internal.core.MinimalState$2.runInWorkspace(MinimalState.java:304)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:43)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)

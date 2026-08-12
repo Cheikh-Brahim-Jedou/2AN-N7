@@ -1,0 +1,13 @@
+void afficher(bool b){
+  if b {
+    print 1;
+    return;
+  } else {
+    print 2;
+    return;
+  }
+}
+
+main {
+  afficher(true);
+}

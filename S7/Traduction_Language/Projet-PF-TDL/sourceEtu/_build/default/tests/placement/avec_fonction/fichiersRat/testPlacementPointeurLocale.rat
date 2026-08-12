@@ -1,0 +1,9 @@
+int f(int x) {
+  int* p = &x;
+  int y = (*p);
+  return y;
+}
+
+main {
+  print f(42);
+}

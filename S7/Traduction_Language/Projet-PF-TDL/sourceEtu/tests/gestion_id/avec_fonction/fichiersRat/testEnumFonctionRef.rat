@@ -1,0 +1,11 @@
+enum Etat { Ouvert, Ferme };
+
+void changer(ref Etat e) {
+  e = Ferme;
+  return;
+}
+
+main {
+  Etat e = Ouvert;
+  changer(ref e);
+}

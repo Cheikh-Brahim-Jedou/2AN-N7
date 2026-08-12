@@ -1,0 +1,97 @@
+Problem:    tsp (cas 2)
+Rows:       34
+Columns:    36 (30 integer, 30 binary)
+Non-zeros:  151
+Status:     INTEGER OPTIMAL
+Objective:  DistanceTotale = 24 (MINimum)
+
+   No.   Row name        Activity     Lower bound   Upper bound
+------ ------------    ------------- ------------- -------------
+     1 DistanceTotale
+                                  24                             
+     2 Depart[ALPHA]
+                                   1             1             = 
+     3 Depart[C1]                  1             1             = 
+     4 Depart[C2]                  1             1             = 
+     5 Depart[C3]                  1             1             = 
+     6 Depart[C4]                  1             1             = 
+     7 Depart[C5]                  1             1             = 
+     8 Arrivee[ALPHA]
+                                   1             1             = 
+     9 Arrivee[C1]                 1             1             = 
+    10 Arrivee[C2]                 1             1             = 
+    11 Arrivee[C3]                 1             1             = 
+    12 Arrivee[C4]                 1             1             = 
+    13 Arrivee[C5]                 1             1             = 
+    14 MTZ[C1,C2]                 -4                           5 
+    15 MTZ[C1,C3]                  5                           5 
+    16 MTZ[C1,C4]                 -2                           5 
+    17 MTZ[C1,C5]                 -3                           5 
+    18 MTZ[C2,C1]                  4                           5 
+    19 MTZ[C2,C3]                  3                           5 
+    20 MTZ[C2,C4]                  2                           5 
+    21 MTZ[C2,C5]                  1                           5 
+    22 MTZ[C3,C1]                  1                           5 
+    23 MTZ[C3,C2]                 -3                           5 
+    24 MTZ[C3,C4]                  5                           5 
+    25 MTZ[C3,C5]                 -2                           5 
+    26 MTZ[C4,C1]                  2                           5 
+    27 MTZ[C4,C2]                 -2                           5 
+    28 MTZ[C4,C3]                  1                           5 
+    29 MTZ[C4,C5]                  5                           5 
+    30 MTZ[C5,C1]                  3                           5 
+    31 MTZ[C5,C2]                  5                           5 
+    32 MTZ[C5,C3]                  2                           5 
+    33 MTZ[C5,C4]                  1                           5 
+    34 FixDepot                    0            -0             = 
+
+   No. Column name       Activity     Lower bound   Upper bound
+------ ------------    ------------- ------------- -------------
+     1 x[ALPHA,C1]  *              1             0             1 
+     2 x[ALPHA,C2]  *              0             0             1 
+     3 x[ALPHA,C3]  *              0             0             1 
+     4 x[ALPHA,C4]  *              0             0             1 
+     5 x[ALPHA,C5]  *              0             0             1 
+     6 x[C1,ALPHA]  *              0             0             1 
+     7 x[C1,C2]     *              0             0             1 
+     8 x[C1,C3]     *              1             0             1 
+     9 x[C1,C4]     *              0             0             1 
+    10 x[C1,C5]     *              0             0             1 
+    11 x[C2,ALPHA]  *              1             0             1 
+    12 x[C2,C1]     *              0             0             1 
+    13 x[C2,C3]     *              0             0             1 
+    14 x[C2,C4]     *              0             0             1 
+    15 x[C2,C5]     *              0             0             1 
+    16 x[C3,ALPHA]  *              0             0             1 
+    17 x[C3,C1]     *              0             0             1 
+    18 x[C3,C2]     *              0             0             1 
+    19 x[C3,C4]     *              1             0             1 
+    20 x[C3,C5]     *              0             0             1 
+    21 x[C4,ALPHA]  *              0             0             1 
+    22 x[C4,C1]     *              0             0             1 
+    23 x[C4,C2]     *              0             0             1 
+    24 x[C4,C3]     *              0             0             1 
+    25 x[C4,C5]     *              1             0             1 
+    26 x[C5,ALPHA]  *              0             0             1 
+    27 x[C5,C1]     *              0             0             1 
+    28 x[C5,C2]     *              1             0             1 
+    29 x[C5,C3]     *              0             0             1 
+    30 x[C5,C4]     *              0             0             1 
+    31 u[C2]                       4             0               
+    32 u[C1]                       0             0               
+    33 u[C3]                       1             0               
+    34 u[C4]                       2             0               
+    35 u[C5]                       3             0               
+    36 u[ALPHA]                    0             0               
+
+Integer feasibility conditions:
+
+KKT.PE: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+KKT.PB: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+End of output

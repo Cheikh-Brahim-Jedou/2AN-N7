@@ -1,0 +1,7 @@
+void print_sum ( int a , int b ) {
+ print ( a + b ) ;
+ return ;
+ }
+ main {
+ print_sum (5 , 3) ;
+  }

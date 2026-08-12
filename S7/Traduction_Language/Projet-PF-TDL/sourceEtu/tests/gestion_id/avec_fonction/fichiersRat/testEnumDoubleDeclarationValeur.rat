@@ -1,0 +1,4 @@
+enum Couleurs {Rouge, Vert};
+enum Feux {Rouge, Orange}; 
+test {
+}

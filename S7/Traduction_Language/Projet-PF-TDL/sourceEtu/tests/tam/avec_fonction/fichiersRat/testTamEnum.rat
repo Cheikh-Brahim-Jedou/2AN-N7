@@ -1,0 +1,15 @@
+enum Jour {Lundi, Mardi};
+
+int estMardi(Jour j) {
+  if (j = Mardi) {
+    return 99;
+  } else {
+    return 0;
+  }
+}
+
+test {
+  Jour j = Lundi;
+  print Mardi;           // Mardi est la 2ème valeur (index 1) -> Affiche 1
+  print estMardi(Mardi); // Affiche 99
+}

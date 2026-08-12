@@ -1,0 +1,717 @@
+/**
+ */
+package netlist;
+
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+
+/**
+ * <!-- begin-user-doc -->
+ * The <b>Package</b> for the model.
+ * It contains accessors for the meta objects to represent
+ * <ul>
+ *   <li>each class,</li>
+ *   <li>each feature of each class,</li>
+ *   <li>each operation of each class,</li>
+ *   <li>each enum,</li>
+ *   <li>and each data type</li>
+ * </ul>
+ * <!-- end-user-doc -->
+ * @see netlist.NetlistFactory
+ * @model kind="package"
+ * @generated
+ */
+public interface NetlistPackage extends EPackage {
+	/**
+	 * The package name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	String eNAME = "netlist";
+
+	/**
+	 * The package namespace URI.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	String eNS_URI = "http://www.example.org/netlist";
+
+	/**
+	 * The package namespace name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	String eNS_PREFIX = "netlist";
+
+	/**
+	 * The singleton instance of the package.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	NetlistPackage eINSTANCE = netlist.impl.NetlistPackageImpl.init();
+
+	/**
+	 * The meta object id for the '{@link netlist.impl.NetlistImpl <em>Netlist</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see netlist.impl.NetlistImpl
+	 * @see netlist.impl.NetlistPackageImpl#getNetlist()
+	 * @generated
+	 */
+	int NETLIST = 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETLIST__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETLIST__DESCRIPTION = 1;
+
+	/**
+	 * The feature id for the '<em><b>Instances</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETLIST__INSTANCES = 2;
+
+	/**
+	 * The feature id for the '<em><b>Nets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETLIST__NETS = 3;
+
+	/**
+	 * The feature id for the '<em><b>Commentaires</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETLIST__COMMENTAIRES = 4;
+
+	/**
+	 * The number of structural features of the '<em>Netlist</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETLIST_FEATURE_COUNT = 5;
+
+	/**
+	 * The number of operations of the '<em>Netlist</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETLIST_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link netlist.impl.InstanceComposantImpl <em>Instance Composant</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see netlist.impl.InstanceComposantImpl
+	 * @see netlist.impl.NetlistPackageImpl#getInstanceComposant()
+	 * @generated
+	 */
+	int INSTANCE_COMPOSANT = 1;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_COMPOSANT__ID = 0;
+
+	/**
+	 * The feature id for the '<em><b>Composant</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_COMPOSANT__COMPOSANT = 1;
+
+	/**
+	 * The feature id for the '<em><b>Connexions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_COMPOSANT__CONNEXIONS = 2;
+
+	/**
+	 * The number of structural features of the '<em>Instance Composant</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_COMPOSANT_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Instance Composant</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_COMPOSANT_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link netlist.impl.NetImpl <em>Net</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see netlist.impl.NetImpl
+	 * @see netlist.impl.NetlistPackageImpl#getNet()
+	 * @generated
+	 */
+	int NET = 2;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NET__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Connexions</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NET__CONNEXIONS = 1;
+
+	/**
+	 * The number of structural features of the '<em>Net</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NET_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Net</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NET_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link netlist.impl.ConnexionImpl <em>Connexion</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see netlist.impl.ConnexionImpl
+	 * @see netlist.impl.NetlistPackageImpl#getConnexion()
+	 * @generated
+	 */
+	int CONNEXION = 3;
+
+	/**
+	 * The feature id for the '<em><b>Port</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNEXION__PORT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Net</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNEXION__NET = 1;
+
+	/**
+	 * The number of structural features of the '<em>Connexion</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNEXION_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Connexion</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNEXION_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link netlist.impl.CommentaireImpl <em>Commentaire</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see netlist.impl.CommentaireImpl
+	 * @see netlist.impl.NetlistPackageImpl#getCommentaire()
+	 * @generated
+	 */
+	int COMMENTAIRE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Texte</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMENTAIRE__TEXTE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Cible</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMENTAIRE__CIBLE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Commentaire</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMENTAIRE_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Commentaire</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMENTAIRE_OPERATION_COUNT = 0;
+
+
+	/**
+	 * Returns the meta object for class '{@link netlist.Netlist <em>Netlist</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Netlist</em>'.
+	 * @see netlist.Netlist
+	 * @generated
+	 */
+	EClass getNetlist();
+
+	/**
+	 * Returns the meta object for the attribute '{@link netlist.Netlist#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see netlist.Netlist#getName()
+	 * @see #getNetlist()
+	 * @generated
+	 */
+	EAttribute getNetlist_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link netlist.Netlist#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see netlist.Netlist#getDescription()
+	 * @see #getNetlist()
+	 * @generated
+	 */
+	EAttribute getNetlist_Description();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link netlist.Netlist#getInstances <em>Instances</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Instances</em>'.
+	 * @see netlist.Netlist#getInstances()
+	 * @see #getNetlist()
+	 * @generated
+	 */
+	EReference getNetlist_Instances();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link netlist.Netlist#getNets <em>Nets</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Nets</em>'.
+	 * @see netlist.Netlist#getNets()
+	 * @see #getNetlist()
+	 * @generated
+	 */
+	EReference getNetlist_Nets();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link netlist.Netlist#getCommentaires <em>Commentaires</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Commentaires</em>'.
+	 * @see netlist.Netlist#getCommentaires()
+	 * @see #getNetlist()
+	 * @generated
+	 */
+	EReference getNetlist_Commentaires();
+
+	/**
+	 * Returns the meta object for class '{@link netlist.InstanceComposant <em>Instance Composant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Instance Composant</em>'.
+	 * @see netlist.InstanceComposant
+	 * @generated
+	 */
+	EClass getInstanceComposant();
+
+	/**
+	 * Returns the meta object for the attribute '{@link netlist.InstanceComposant#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see netlist.InstanceComposant#getId()
+	 * @see #getInstanceComposant()
+	 * @generated
+	 */
+	EAttribute getInstanceComposant_Id();
+
+	/**
+	 * Returns the meta object for the reference '{@link netlist.InstanceComposant#getComposant <em>Composant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Composant</em>'.
+	 * @see netlist.InstanceComposant#getComposant()
+	 * @see #getInstanceComposant()
+	 * @generated
+	 */
+	EReference getInstanceComposant_Composant();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link netlist.InstanceComposant#getConnexions <em>Connexions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Connexions</em>'.
+	 * @see netlist.InstanceComposant#getConnexions()
+	 * @see #getInstanceComposant()
+	 * @generated
+	 */
+	EReference getInstanceComposant_Connexions();
+
+	/**
+	 * Returns the meta object for class '{@link netlist.Net <em>Net</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Net</em>'.
+	 * @see netlist.Net
+	 * @generated
+	 */
+	EClass getNet();
+
+	/**
+	 * Returns the meta object for the attribute '{@link netlist.Net#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see netlist.Net#getName()
+	 * @see #getNet()
+	 * @generated
+	 */
+	EAttribute getNet_Name();
+
+	/**
+	 * Returns the meta object for the reference list '{@link netlist.Net#getConnexions <em>Connexions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Connexions</em>'.
+	 * @see netlist.Net#getConnexions()
+	 * @see #getNet()
+	 * @generated
+	 */
+	EReference getNet_Connexions();
+
+	/**
+	 * Returns the meta object for class '{@link netlist.Connexion <em>Connexion</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Connexion</em>'.
+	 * @see netlist.Connexion
+	 * @generated
+	 */
+	EClass getConnexion();
+
+	/**
+	 * Returns the meta object for the reference '{@link netlist.Connexion#getPort <em>Port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Port</em>'.
+	 * @see netlist.Connexion#getPort()
+	 * @see #getConnexion()
+	 * @generated
+	 */
+	EReference getConnexion_Port();
+
+	/**
+	 * Returns the meta object for the reference '{@link netlist.Connexion#getNet <em>Net</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Net</em>'.
+	 * @see netlist.Connexion#getNet()
+	 * @see #getConnexion()
+	 * @generated
+	 */
+	EReference getConnexion_Net();
+
+	/**
+	 * Returns the meta object for class '{@link netlist.Commentaire <em>Commentaire</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Commentaire</em>'.
+	 * @see netlist.Commentaire
+	 * @generated
+	 */
+	EClass getCommentaire();
+
+	/**
+	 * Returns the meta object for the attribute '{@link netlist.Commentaire#getTexte <em>Texte</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Texte</em>'.
+	 * @see netlist.Commentaire#getTexte()
+	 * @see #getCommentaire()
+	 * @generated
+	 */
+	EAttribute getCommentaire_Texte();
+
+	/**
+	 * Returns the meta object for the reference '{@link netlist.Commentaire#getCible <em>Cible</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Cible</em>'.
+	 * @see netlist.Commentaire#getCible()
+	 * @see #getCommentaire()
+	 * @generated
+	 */
+	EReference getCommentaire_Cible();
+
+	/**
+	 * Returns the factory that creates the instances of the model.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the factory that creates the instances of the model.
+	 * @generated
+	 */
+	NetlistFactory getNetlistFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each operation of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals {
+		/**
+		 * The meta object literal for the '{@link netlist.impl.NetlistImpl <em>Netlist</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see netlist.impl.NetlistImpl
+		 * @see netlist.impl.NetlistPackageImpl#getNetlist()
+		 * @generated
+		 */
+		EClass NETLIST = eINSTANCE.getNetlist();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NETLIST__NAME = eINSTANCE.getNetlist_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NETLIST__DESCRIPTION = eINSTANCE.getNetlist_Description();
+
+		/**
+		 * The meta object literal for the '<em><b>Instances</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NETLIST__INSTANCES = eINSTANCE.getNetlist_Instances();
+
+		/**
+		 * The meta object literal for the '<em><b>Nets</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NETLIST__NETS = eINSTANCE.getNetlist_Nets();
+
+		/**
+		 * The meta object literal for the '<em><b>Commentaires</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NETLIST__COMMENTAIRES = eINSTANCE.getNetlist_Commentaires();
+
+		/**
+		 * The meta object literal for the '{@link netlist.impl.InstanceComposantImpl <em>Instance Composant</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see netlist.impl.InstanceComposantImpl
+		 * @see netlist.impl.NetlistPackageImpl#getInstanceComposant()
+		 * @generated
+		 */
+		EClass INSTANCE_COMPOSANT = eINSTANCE.getInstanceComposant();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INSTANCE_COMPOSANT__ID = eINSTANCE.getInstanceComposant_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>Composant</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INSTANCE_COMPOSANT__COMPOSANT = eINSTANCE.getInstanceComposant_Composant();
+
+		/**
+		 * The meta object literal for the '<em><b>Connexions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INSTANCE_COMPOSANT__CONNEXIONS = eINSTANCE.getInstanceComposant_Connexions();
+
+		/**
+		 * The meta object literal for the '{@link netlist.impl.NetImpl <em>Net</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see netlist.impl.NetImpl
+		 * @see netlist.impl.NetlistPackageImpl#getNet()
+		 * @generated
+		 */
+		EClass NET = eINSTANCE.getNet();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NET__NAME = eINSTANCE.getNet_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Connexions</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NET__CONNEXIONS = eINSTANCE.getNet_Connexions();
+
+		/**
+		 * The meta object literal for the '{@link netlist.impl.ConnexionImpl <em>Connexion</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see netlist.impl.ConnexionImpl
+		 * @see netlist.impl.NetlistPackageImpl#getConnexion()
+		 * @generated
+		 */
+		EClass CONNEXION = eINSTANCE.getConnexion();
+
+		/**
+		 * The meta object literal for the '<em><b>Port</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNEXION__PORT = eINSTANCE.getConnexion_Port();
+
+		/**
+		 * The meta object literal for the '<em><b>Net</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNEXION__NET = eINSTANCE.getConnexion_Net();
+
+		/**
+		 * The meta object literal for the '{@link netlist.impl.CommentaireImpl <em>Commentaire</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see netlist.impl.CommentaireImpl
+		 * @see netlist.impl.NetlistPackageImpl#getCommentaire()
+		 * @generated
+		 */
+		EClass COMMENTAIRE = eINSTANCE.getCommentaire();
+
+		/**
+		 * The meta object literal for the '<em><b>Texte</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMMENTAIRE__TEXTE = eINSTANCE.getCommentaire_Texte();
+
+		/**
+		 * The meta object literal for the '<em><b>Cible</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMMENTAIRE__CIBLE = eINSTANCE.getCommentaire_Cible();
+
+	}
+
+} //NetlistPackage

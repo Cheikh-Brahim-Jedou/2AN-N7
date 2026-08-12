@@ -1,0 +1,4 @@
+main {
+  int* p = null;
+  print 0;
+}

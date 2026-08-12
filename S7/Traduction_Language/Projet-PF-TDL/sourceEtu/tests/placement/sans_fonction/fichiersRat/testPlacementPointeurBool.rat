@@ -1,0 +1,5 @@
+main {
+  bool b = true;
+  bool* p = &b;
+  int x = 5;
+}

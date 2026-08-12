@@ -1,0 +1,10 @@
+main {
+  bool b = true;
+  bool* p = &b;
+  (*p) = false;
+  if (*p) {
+    print 1;
+  } else {
+    print 0;
+  }
+}

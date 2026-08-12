@@ -1,0 +1,14 @@
+void afficher(int x){
+  print x;
+  return;
+}
+
+int calculer(int x){
+  afficher(x);
+  return (x + 1);
+}
+
+main {
+  int r = calculer(5);
+  print r;
+}

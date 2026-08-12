@@ -1,0 +1,13 @@
+void compter(int n){
+  if (n = 0) {
+    return;
+  } else {
+    print n;
+    compter(0);
+    return;
+  }
+}
+
+main {
+  compter(3);
+}

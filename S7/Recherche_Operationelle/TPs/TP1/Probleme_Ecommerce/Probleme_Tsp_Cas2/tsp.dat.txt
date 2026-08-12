@@ -1,0 +1,27 @@
+# Données pour TSP ALPHA + 5 clients
+
+
+data;
+
+set VILLES := ALPHA C1 C2 C3 C4 C5;
+
+param depot := 'ALPHA';
+
+set ARCS :=
+    ALPHA C1, ALPHA C2, ALPHA C3, ALPHA C4, ALPHA C5,
+    C1 ALPHA, C1 C2, C1 C3, C1 C4, C1 C5,
+    C2 ALPHA, C2 C1, C2 C3, C2 C4, C2 C5,
+    C3 ALPHA, C3 C1, C3 C2, C3 C4, C3 C5,
+    C4 ALPHA, C4 C1, C4 C2, C4 C3, C4 C5,
+    C5 ALPHA, C5 C1, C5 C2, C5 C3, C5 C4;
+
+param distance :
+        ALPHA   C1      C2      C3      C4      C5 :=
+ALPHA   .      1       2       10      12      15
+C1      1       .       1       8       10      11
+C2      2       1       .       8       13      10
+C3      10      8       8       .      1       1
+C4      12      10      13      1       .       2
+C5      15      11      10      1       2       .;
+
+end;

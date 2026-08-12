@@ -1,0 +1,36 @@
+/**
+ */
+package layout.tests;
+
+import layout.Couche;
+
+/**
+ * <!-- begin-user-doc -->
+ * A test case for the model object '<em><b>Couche</b></em>'.
+ * <!-- end-user-doc -->
+ * @generated
+ */
+public abstract class CoucheTest extends CoucheexterneTest {
+
+	/**
+	 * Constructs a new Couche test case with the given name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CoucheTest(String name) {
+		super(name);
+	}
+
+	/**
+	 * Returns the fixture for this Couche test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected Couche getFixture() {
+		return (Couche)fixture;
+	}
+
+} //CoucheTest

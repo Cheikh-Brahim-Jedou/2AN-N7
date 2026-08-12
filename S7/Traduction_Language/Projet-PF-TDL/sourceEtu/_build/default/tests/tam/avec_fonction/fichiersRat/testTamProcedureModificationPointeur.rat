@@ -1,0 +1,10 @@
+void modifier(int* p, int val){
+  (*p) = val;
+  return;
+}
+
+main {
+  int x = 0;
+  modifier(&x, 42);
+  print x;
+}

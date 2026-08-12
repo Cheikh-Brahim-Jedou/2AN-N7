@@ -1,0 +1,9 @@
+void afficher(int x){
+  int y = (x + 1);
+  print y;
+  return;
+}
+
+main {
+  afficher(41);
+}

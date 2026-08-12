@@ -1,0 +1,9 @@
+void afficher(int* p){
+  print (*p);
+  return;
+}
+
+main {
+  int x = 42;
+  afficher(&x);
+}

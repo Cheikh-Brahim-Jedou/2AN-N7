@@ -1,0 +1,4 @@
+main {
+  int* p = null;
+  bool* q = p;
+}

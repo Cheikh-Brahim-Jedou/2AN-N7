@@ -1,0 +1,9 @@
+enum Couleur {Rouge, Vert, Bleu};
+
+Couleur getFavorite(){
+  return Rouge;
+}
+
+main{
+  Couleur c = getFavorite();
+}

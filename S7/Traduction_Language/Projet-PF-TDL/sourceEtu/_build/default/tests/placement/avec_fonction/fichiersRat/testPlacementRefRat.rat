@@ -1,0 +1,9 @@
+void doubler(ref rat r){
+  r = (r * [2/1]);
+  return;
+}
+
+main {
+  rat x = [3/4];
+  doubler(ref x);
+}

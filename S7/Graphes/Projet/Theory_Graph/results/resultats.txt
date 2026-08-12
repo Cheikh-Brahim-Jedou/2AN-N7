@@ -1,0 +1,980 @@
+     ANALYSE DE L'ESSAIM DE NANOSATELLITES LUNAIRES
+
+======================================================================
+  Densité faible Portée 20km
+======================================================================
+
+CARACTERISTIQUES GENERALES
+
+   Nombre de satellites : 100
+   Nombre de connexions : 90
+   Densité du réseau : 0.0182
+
+ANALYSE DES DEGRES
+
+   Degré moyen : 1.80
+   Degré minimum : 0
+   Degré maximum : 9
+   Ecart type : 1.77
+
+   Distribution des degrés :
+      [0.0 - 0.9] : 27 satellites
+      [0.9 - 1.8] : 27 satellites
+      [1.8 - 2.7] : 16 satellites
+      [2.7 - 3.6] : 14 satellites
+      [3.6 - 4.5] : 8 satellites
+      [4.5 - 5.4] : 5 satellites
+      [5.4 - 6.3] : 1 satellites
+      [6.3 - 7.2] : 1 satellites
+      [8.1 - 9.0] : 1 satellites
+
+COEFFICIENT DE CLUSTERING
+
+   Clustering moyen : 0.2261
+   Clustering minimum : 0.0000
+   Clustering maximum : 1.0000
+   Ecart type : 0.3381
+
+   Distribution du clustering :
+      [0.00 - 0.10] : 62 satellites
+      [0.10 - 0.20] : 1 satellites
+      [0.20 - 0.30] : 1 satellites
+      [0.30 - 0.40] : 15 satellites
+      [0.40 - 0.50] : 1 satellites
+      [0.50 - 0.60] : 2 satellites
+      [0.60 - 0.70] : 5 satellites
+      [0.70 - 0.80] : 1 satellites
+      [0.80 - 0.90] : 1 satellites
+      [0.90 - 1.00] : 11 satellites
+
+CLIQUES
+
+   Nombre total de cliques : 77
+   Taille de la plus grande clique : 5 satellites
+
+COMPOSANTES CONNEXES
+
+   Nombre de composantes : 39
+   Taille de la plus grande composante : 31 satellites
+   Pourcentage dans la composante principale : 31.0%
+
+PLUS COURTS CHEMINS
+
+   Longueur moyenne : 4.03 sauts
+   Longueur minimale : 1 saut
+   Longueur maximale (diamètre) : 10 sauts
+   Nombre total de plus courts chemins : 1790
+
+   Distribution des longueurs de chemins :
+      1 saut(s) : 106 chemins
+      2 saut(s) : 140 chemins
+      3 saut(s) : 160 chemins
+      4 saut(s) : 162 chemins
+      5 saut(s) : 144 chemins
+      6 saut(s) : 100 chemins
+      7 saut(s) : 58 chemins
+      8 saut(s) : 38 chemins
+      9 saut(s) : 18 chemins
+      10 saut(s) : 4 chemins
+
+
+
+======================================================================
+  Densité faible Portée 40km
+======================================================================
+
+CARACTERISTIQUES GENERALES
+
+   Nombre de satellites : 100
+   Nombre de connexions : 571
+   Densité du réseau : 0.1154
+
+ANALYSE DES DEGRES
+
+   Degré moyen : 11.42
+   Degré minimum : 0
+   Degré maximum : 29
+   Ecart type : 8.16
+
+   Distribution des degrés :
+      [0.0 - 2.9] : 16 satellites
+      [2.9 - 5.8] : 16 satellites
+      [5.8 - 8.7] : 12 satellites
+      [8.7 - 11.6] : 12 satellites
+      [11.6 - 14.5] : 8 satellites
+      [14.5 - 17.4] : 10 satellites
+      [17.4 - 20.3] : 9 satellites
+      [20.3 - 23.2] : 7 satellites
+      [23.2 - 26.1] : 4 satellites
+      [26.1 - 29.0] : 6 satellites
+
+COEFFICIENT DE CLUSTERING
+
+   Clustering moyen : 0.5205
+   Clustering minimum : 0.0000
+   Clustering maximum : 1.0000
+   Ecart type : 0.2506
+
+   Distribution du clustering :
+      [0.00 - 0.10] : 15 satellites
+      [0.30 - 0.40] : 2 satellites
+      [0.40 - 0.50] : 12 satellites
+      [0.50 - 0.60] : 32 satellites
+      [0.60 - 0.70] : 20 satellites
+      [0.70 - 0.80] : 11 satellites
+      [0.80 - 0.90] : 4 satellites
+      [0.90 - 1.00] : 4 satellites
+
+CLIQUES
+
+   Nombre total de cliques : 147
+   Taille de la plus grande clique : 12 satellites
+
+COMPOSANTES CONNEXES
+
+   Nombre de composantes : 8
+   Taille de la plus grande composante : 91 satellites
+   Pourcentage dans la composante principale : 91.0%
+
+PLUS COURTS CHEMINS
+
+   Longueur moyenne : 2.90 sauts
+   Longueur minimale : 1 saut
+   Longueur maximale (diamètre) : 9 sauts
+   Nombre total de plus courts chemins : 111456
+
+   Distribution des longueurs de chemins :
+      1 saut(s) : 1138 chemins
+      2 saut(s) : 2406 chemins
+      3 saut(s) : 2202 chemins
+      4 saut(s) : 1442 chemins
+      5 saut(s) : 680 chemins
+      6 saut(s) : 250 chemins
+      7 saut(s) : 58 chemins
+      8 saut(s) : 12 chemins
+      9 saut(s) : 2 chemins
+
+
+
+======================================================================
+  Densité faible Portée 60km
+======================================================================
+
+CARACTERISTIQUES GENERALES
+
+   Nombre de satellites : 100
+   Nombre de connexions : 1471
+   Densité du réseau : 0.2972
+
+ANALYSE DES DEGRES
+
+   Degré moyen : 29.42
+   Degré minimum : 0
+   Degré maximum : 56
+   Ecart type : 15.99
+
+   Distribution des degrés :
+      [0.0 - 5.6] : 7 satellites
+      [5.6 - 11.2] : 14 satellites
+      [11.2 - 16.8] : 6 satellites
+      [16.8 - 22.4] : 8 satellites
+      [22.4 - 28.0] : 8 satellites
+      [28.0 - 33.6] : 13 satellites
+      [33.6 - 39.2] : 11 satellites
+      [39.2 - 44.8] : 7 satellites
+      [44.8 - 50.4] : 18 satellites
+      [50.4 - 56.0] : 8 satellites
+
+COEFFICIENT DE CLUSTERING
+
+   Clustering moyen : 0.6724
+   Clustering minimum : 0.0000
+   Clustering maximum : 1.0000
+   Ecart type : 0.1599
+
+   Distribution du clustering :
+      [0.00 - 0.10] : 4 satellites
+      [0.50 - 0.60] : 7 satellites
+      [0.60 - 0.70] : 44 satellites
+      [0.70 - 0.80] : 31 satellites
+      [0.80 - 0.90] : 13 satellites
+      [0.90 - 1.00] : 1 satellites
+
+CLIQUES
+
+   Nombre total de cliques : 301
+   Taille de la plus grande clique : 24 satellites
+
+COMPOSANTES CONNEXES
+
+   Nombre de composantes : 4
+   Taille de la plus grande composante : 96 satellites
+   Pourcentage dans la composante principale : 96.0%
+
+PLUS COURTS CHEMINS
+
+   Longueur moyenne : 1.92 sauts
+   Longueur minimale : 1 saut
+   Longueur maximale (diamètre) : 5 sauts
+   Nombre total de plus courts chemins : 181076
+
+   Distribution des longueurs de chemins :
+      1 saut(s) : 2940 chemins
+      2 saut(s) : 4226 chemins
+      3 saut(s) : 1696 chemins
+      4 saut(s) : 242 chemins
+      5 saut(s) : 16 chemins
+
+
+
+======================================================================
+  Densité moyenne Portée 20km
+======================================================================
+
+CARACTERISTIQUES GENERALES
+
+   Nombre de satellites : 100
+   Nombre de connexions : 173
+   Densité du réseau : 0.0349
+
+ANALYSE DES DEGRES
+
+   Degré moyen : 3.46
+   Degré minimum : 0
+   Degré maximum : 13
+   Ecart type : 3.07
+
+   Distribution des degrés :
+      [0.0 - 1.3] : 33 satellites
+      [1.3 - 2.6] : 12 satellites
+      [2.6 - 3.9] : 13 satellites
+      [3.9 - 5.2] : 23 satellites
+      [5.2 - 6.5] : 3 satellites
+      [6.5 - 7.8] : 3 satellites
+      [7.8 - 9.1] : 7 satellites
+      [9.1 - 10.4] : 2 satellites
+      [10.4 - 11.7] : 2 satellites
+      [11.7 - 13.0] : 2 satellites
+
+COEFFICIENT DE CLUSTERING
+
+   Clustering moyen : 0.3637
+   Clustering minimum : 0.0000
+   Clustering maximum : 1.0000
+   Ecart type : 0.3441
+
+   Distribution du clustering :
+      [0.00 - 0.10] : 38 satellites
+      [0.10 - 0.20] : 5 satellites
+      [0.20 - 0.30] : 2 satellites
+      [0.30 - 0.40] : 9 satellites
+      [0.40 - 0.50] : 3 satellites
+      [0.50 - 0.60] : 14 satellites
+      [0.60 - 0.70] : 15 satellites
+      [0.70 - 0.80] : 2 satellites
+      [0.80 - 0.90] : 1 satellites
+      [0.90 - 1.00] : 11 satellites
+
+CLIQUES
+
+   Nombre total de cliques : 83
+   Taille de la plus grande clique : 7 satellites
+
+COMPOSANTES CONNEXES
+
+   Nombre de composantes : 22
+   Taille de la plus grande composante : 63 satellites
+   Pourcentage dans la composante principale : 63.0%
+
+PLUS COURTS CHEMINS
+
+   Longueur moyenne : 5.24 sauts
+   Longueur minimale : 1 saut
+   Longueur maximale (diamètre) : 16 sauts
+   Nombre total de plus courts chemins : 100308
+
+   Distribution des longueurs de chemins :
+      1 saut(s) : 306 chemins
+      2 saut(s) : 438 chemins
+      3 saut(s) : 468 chemins
+      4 saut(s) : 542 chemins
+      5 saut(s) : 506 chemins
+      6 saut(s) : 434 chemins
+      7 saut(s) : 374 chemins
+      8 saut(s) : 310 chemins
+      9 saut(s) : 200 chemins
+      10 saut(s) : 122 chemins
+      11 saut(s) : 92 chemins
+      12 saut(s) : 58 chemins
+      13 saut(s) : 30 chemins
+      14 saut(s) : 16 chemins
+      15 saut(s) : 8 chemins
+      16 saut(s) : 2 chemins
+
+
+
+======================================================================
+  Densité moyenne Portée 40km
+======================================================================
+
+CARACTERISTIQUES GENERALES
+
+   Nombre de satellites : 100
+   Nombre de connexions : 842
+   Densité du réseau : 0.1701
+
+ANALYSE DES DEGRES
+
+   Degré moyen : 16.84
+   Degré minimum : 0
+   Degré maximum : 35
+   Ecart type : 9.19
+
+   Distribution des degrés :
+      [0.0 - 3.5] : 10 satellites
+      [3.5 - 7.0] : 5 satellites
+      [7.0 - 10.5] : 11 satellites
+      [10.5 - 14.0] : 12 satellites
+      [14.0 - 17.5] : 18 satellites
+      [17.5 - 21.0] : 8 satellites
+      [21.0 - 24.5] : 11 satellites
+      [24.5 - 28.0] : 10 satellites
+      [28.0 - 31.5] : 9 satellites
+      [31.5 - 35.0] : 6 satellites
+
+COEFFICIENT DE CLUSTERING
+
+   Clustering moyen : 0.6370
+   Clustering minimum : 0.0000
+   Clustering maximum : 1.0000
+   Ecart type : 0.1747
+
+   Distribution du clustering :
+      [0.00 - 0.10] : 4 satellites
+      [0.40 - 0.50] : 1 satellites
+      [0.50 - 0.60] : 33 satellites
+      [0.60 - 0.70] : 37 satellites
+      [0.70 - 0.80] : 13 satellites
+      [0.80 - 0.90] : 5 satellites
+      [0.90 - 1.00] : 7 satellites
+
+CLIQUES
+
+   Nombre total de cliques : 171
+   Taille de la plus grande clique : 16 satellites
+
+COMPOSANTES CONNEXES
+
+   Nombre de composantes : 4
+   Taille de la plus grande composante : 97 satellites
+   Pourcentage dans la composante principale : 97.0%
+
+PLUS COURTS CHEMINS
+
+   Longueur moyenne : 2.77 sauts
+   Longueur minimale : 1 saut
+   Longueur maximale (diamètre) : 9 sauts
+   Nombre total de plus courts chemins : 287784
+
+   Distribution des longueurs de chemins :
+      1 saut(s) : 1684 chemins
+      2 saut(s) : 2848 chemins
+      3 saut(s) : 2328 chemins
+      4 saut(s) : 1408 chemins
+      5 saut(s) : 664 chemins
+      6 saut(s) : 256 chemins
+      7 saut(s) : 98 chemins
+      8 saut(s) : 24 chemins
+      9 saut(s) : 2 chemins
+
+
+
+======================================================================
+  Densité moyenne Portée 60km
+======================================================================
+
+CARACTERISTIQUES GENERALES
+
+   Nombre de satellites : 100
+   Nombre de connexions : 1782
+   Densité du réseau : 0.3600
+
+ANALYSE DES DEGRES
+
+   Degré moyen : 35.64
+   Degré minimum : 0
+   Degré maximum : 57
+   Ecart type : 15.18
+
+   Distribution des degrés :
+      [0.0 - 5.7] : 2 satellites
+      [5.7 - 11.4] : 7 satellites
+      [11.4 - 17.1] : 5 satellites
+      [17.1 - 22.8] : 7 satellites
+      [22.8 - 28.5] : 11 satellites
+      [28.5 - 34.2] : 14 satellites
+      [34.2 - 39.9] : 7 satellites
+      [39.9 - 45.6] : 17 satellites
+      [45.6 - 51.3] : 9 satellites
+      [51.3 - 57.0] : 21 satellites
+
+COEFFICIENT DE CLUSTERING
+
+   Clustering moyen : 0.7280
+   Clustering minimum : 0.0000
+   Clustering maximum : 1.0000
+   Ecart type : 0.1053
+
+   Distribution du clustering :
+      [0.00 - 0.10] : 1 satellites
+      [0.60 - 0.70] : 37 satellites
+      [0.70 - 0.80] : 45 satellites
+      [0.80 - 0.90] : 12 satellites
+      [0.90 - 1.00] : 5 satellites
+
+CLIQUES
+
+   Nombre total de cliques : 258
+   Taille de la plus grande clique : 27 satellites
+
+COMPOSANTES CONNEXES
+
+   Nombre de composantes : 2
+   Taille de la plus grande composante : 99 satellites
+   Pourcentage dans la composante principale : 99.0%
+
+PLUS COURTS CHEMINS
+
+   Longueur moyenne : 1.92 sauts
+   Longueur minimale : 1 saut
+   Longueur maximale (diamètre) : 6 sauts
+   Nombre total de plus courts chemins : 481566
+
+   Distribution des longueurs de chemins :
+      1 saut(s) : 3564 chemins
+      2 saut(s) : 3894 chemins
+      3 saut(s) : 1726 chemins
+      4 saut(s) : 452 chemins
+      5 saut(s) : 62 chemins
+      6 saut(s) : 4 chemins
+
+
+
+======================================================================
+  Densité forte Portée 20km
+======================================================================
+
+CARACTERISTIQUES GENERALES
+
+   Nombre de satellites : 100
+   Nombre de connexions : 186
+   Densité du réseau : 0.0376
+
+ANALYSE DES DEGRES
+
+   Degré moyen : 3.72
+   Degré minimum : 0
+   Degré maximum : 13
+   Ecart type : 3.07
+
+   Distribution des degrés :
+      [0.0 - 1.3] : 30 satellites
+      [1.3 - 2.6] : 16 satellites
+      [2.6 - 3.9] : 10 satellites
+      [3.9 - 5.2] : 16 satellites
+      [5.2 - 6.5] : 7 satellites
+      [6.5 - 7.8] : 5 satellites
+      [7.8 - 9.1] : 13 satellites
+      [9.1 - 10.4] : 1 satellites
+      [10.4 - 11.7] : 1 satellites
+      [11.7 - 13.0] : 1 satellites
+
+COEFFICIENT DE CLUSTERING
+
+   Clustering moyen : 0.3981
+   Clustering minimum : 0.0000
+   Clustering maximum : 1.0000
+   Ecart type : 0.3568
+
+   Distribution du clustering :
+      [0.00 - 0.10] : 35 satellites
+      [0.10 - 0.20] : 1 satellites
+      [0.20 - 0.30] : 2 satellites
+      [0.30 - 0.40] : 13 satellites
+      [0.40 - 0.50] : 11 satellites
+      [0.50 - 0.60] : 8 satellites
+      [0.60 - 0.70] : 11 satellites
+      [0.70 - 0.80] : 1 satellites
+      [0.80 - 0.90] : 3 satellites
+      [0.90 - 1.00] : 15 satellites
+
+CLIQUES
+
+   Nombre total de cliques : 85
+   Taille de la plus grande clique : 5 satellites
+
+COMPOSANTES CONNEXES
+
+   Nombre de composantes : 23
+   Taille de la plus grande composante : 61 satellites
+   Pourcentage dans la composante principale : 61.0%
+
+PLUS COURTS CHEMINS
+
+   Longueur moyenne : 4.14 sauts
+   Longueur minimale : 1 saut
+   Longueur maximale (diamètre) : 11 sauts
+   Nombre total de plus courts chemins : 19378
+
+   Distribution des longueurs de chemins :
+      1 saut(s) : 332 chemins
+      2 saut(s) : 606 chemins
+      3 saut(s) : 622 chemins
+      4 saut(s) : 608 chemins
+      5 saut(s) : 550 chemins
+      6 saut(s) : 408 chemins
+      7 saut(s) : 280 chemins
+      8 saut(s) : 150 chemins
+      9 saut(s) : 76 chemins
+      10 saut(s) : 22 chemins
+      11 saut(s) : 6 chemins
+
+
+
+======================================================================
+  Densité forte Portée 40km
+======================================================================
+
+CARACTERISTIQUES GENERALES
+
+   Nombre de satellites : 100
+   Nombre de connexions : 934
+   Densité du réseau : 0.1887
+
+ANALYSE DES DEGRES
+
+   Degré moyen : 18.68
+   Degré minimum : 0
+   Degré maximum : 38
+   Ecart type : 11.04
+
+   Distribution des degrés :
+      [0.0 - 3.8] : 10 satellites
+      [3.8 - 7.6] : 11 satellites
+      [7.6 - 11.4] : 12 satellites
+      [11.4 - 15.2] : 7 satellites
+      [15.2 - 19.0] : 10 satellites
+      [19.0 - 22.8] : 13 satellites
+      [22.8 - 26.6] : 7 satellites
+      [26.6 - 30.4] : 13 satellites
+      [30.4 - 34.2] : 8 satellites
+      [34.2 - 38.0] : 9 satellites
+
+COEFFICIENT DE CLUSTERING
+
+   Clustering moyen : 0.6651
+   Clustering minimum : 0.0000
+   Clustering maximum : 1.0000
+   Ecart type : 0.1831
+
+   Distribution du clustering :
+      [0.00 - 0.10] : 4 satellites
+      [0.20 - 0.30] : 1 satellites
+      [0.30 - 0.40] : 1 satellites
+      [0.40 - 0.50] : 1 satellites
+      [0.50 - 0.60] : 13 satellites
+      [0.60 - 0.70] : 46 satellites
+      [0.70 - 0.80] : 19 satellites
+      [0.80 - 0.90] : 7 satellites
+      [0.90 - 1.00] : 8 satellites
+
+CLIQUES
+
+   Nombre total de cliques : 139
+   Taille de la plus grande clique : 21 satellites
+
+COMPOSANTES CONNEXES
+
+   Nombre de composantes : 4
+   Taille de la plus grande composante : 96 satellites
+   Pourcentage dans la composante principale : 96.0%
+
+PLUS COURTS CHEMINS
+
+   Longueur moyenne : 2.81 sauts
+   Longueur minimale : 1 saut
+   Longueur maximale (diamètre) : 9 sauts
+   Nombre total de plus courts chemins : 602446
+
+   Distribution des longueurs de chemins :
+      1 saut(s) : 1866 chemins
+      2 saut(s) : 2696 chemins
+      3 saut(s) : 1996 chemins
+      4 saut(s) : 1268 chemins
+      5 saut(s) : 744 chemins
+      6 saut(s) : 332 chemins
+      7 saut(s) : 146 chemins
+      8 saut(s) : 60 chemins
+      9 saut(s) : 12 chemins
+
+
+
+======================================================================
+  Densité forte Portée 60km
+======================================================================
+
+CARACTERISTIQUES GENERALES
+
+   Nombre de satellites : 100
+   Nombre de connexions : 1870
+   Densité du réseau : 0.3778
+
+ANALYSE DES DEGRES
+
+   Degré moyen : 37.40
+   Degré minimum : 1
+   Degré maximum : 59
+   Ecart type : 17.32
+
+   Distribution des degrés :
+      [1.0 - 6.8] : 6 satellites
+      [6.8 - 12.6] : 6 satellites
+      [12.6 - 18.4] : 5 satellites
+      [18.4 - 24.2] : 8 satellites
+      [24.2 - 30.0] : 9 satellites
+      [30.0 - 35.8] : 7 satellites
+      [35.8 - 41.6] : 6 satellites
+      [41.6 - 47.4] : 16 satellites
+      [47.4 - 53.2] : 12 satellites
+      [53.2 - 59.0] : 25 satellites
+
+COEFFICIENT DE CLUSTERING
+
+   Clustering moyen : 0.7281
+   Clustering minimum : 0.0000
+   Clustering maximum : 1.0000
+   Ecart type : 0.1616
+
+   Distribution du clustering :
+      [0.00 - 0.10] : 4 satellites
+      [0.50 - 0.60] : 2 satellites
+      [0.60 - 0.70] : 13 satellites
+      [0.70 - 0.80] : 59 satellites
+      [0.80 - 0.90] : 18 satellites
+      [0.90 - 1.00] : 4 satellites
+
+CLIQUES
+
+   Nombre total de cliques : 200
+   Taille de la plus grande clique : 31 satellites
+
+COMPOSANTES CONNEXES
+
+   Nombre de composantes : 2
+   Taille de la plus grande composante : 98 satellites
+   Pourcentage dans la composante principale : 98.0%
+
+PLUS COURTS CHEMINS
+
+   Longueur moyenne : 1.98 sauts
+   Longueur minimale : 1 saut
+   Longueur maximale (diamètre) : 8 sauts
+   Nombre total de plus courts chemins : 711512
+
+   Distribution des longueurs de chemins :
+      1 saut(s) : 3738 chemins
+      2 saut(s) : 3470 chemins
+      3 saut(s) : 1488 chemins
+      4 saut(s) : 508 chemins
+      5 saut(s) : 194 chemins
+      6 saut(s) : 76 chemins
+      7 saut(s) : 24 chemins
+      8 saut(s) : 8 chemins
+
+
+
+======================================================================
+  Densité faible  Portée 60km (pondéré)
+======================================================================
+
+CARACTERISTIQUES GENERALES
+
+   Nombre de satellites : 100
+   Nombre de connexions : 1471
+   Densité du réseau : 0.2972
+
+ANALYSE DES DEGRES
+
+   Degré moyen : 29.42
+   Degré minimum : 0
+   Degré maximum : 56
+   Ecart type : 15.99
+
+   Distribution des degrés :
+      [0.0 - 5.6] : 7 satellites
+      [5.6 - 11.2] : 14 satellites
+      [11.2 - 16.8] : 6 satellites
+      [16.8 - 22.4] : 8 satellites
+      [22.4 - 28.0] : 8 satellites
+      [28.0 - 33.6] : 13 satellites
+      [33.6 - 39.2] : 11 satellites
+      [39.2 - 44.8] : 7 satellites
+      [44.8 - 50.4] : 18 satellites
+      [50.4 - 56.0] : 8 satellites
+
+COEFFICIENT DE CLUSTERING
+
+   Clustering moyen : 0.6724
+   Clustering minimum : 0.0000
+   Clustering maximum : 1.0000
+   Ecart type : 0.1599
+
+   Distribution du clustering :
+      [0.00 - 0.10] : 4 satellites
+      [0.50 - 0.60] : 7 satellites
+      [0.60 - 0.70] : 44 satellites
+      [0.70 - 0.80] : 31 satellites
+      [0.80 - 0.90] : 13 satellites
+      [0.90 - 1.00] : 1 satellites
+
+CLIQUES
+
+   Nombre total de cliques : 301
+   Taille de la plus grande clique : 24 satellites
+
+COMPOSANTES CONNEXES
+
+   Nombre de composantes : 4
+   Taille de la plus grande composante : 96 satellites
+   Pourcentage dans la composante principale : 96.0%
+
+PLUS COURTS CHEMINS
+
+   Longueur moyenne : 1.92 sauts
+   Longueur minimale : 1 saut
+   Longueur maximale (diamètre) : 5 sauts
+   Nombre total de plus courts chemins : 181076
+
+   Distribution des longueurs de chemins :
+      1 saut(s) : 2940 chemins
+      2 saut(s) : 4226 chemins
+      3 saut(s) : 1696 chemins
+      4 saut(s) : 242 chemins
+      5 saut(s) : 16 chemins
+
+CHEMINS PONDERES (distance au carré)
+
+   Longueur moyenne pondérée : 2458219572.61
+   Longueur minimale : 5029367.77
+   Longueur maximale : 9203966393.65
+
+   Distribution des distances pondérées :
+      [5029368 - 924923070] : 996 chemins
+      [924923070 - 1844816773] : 2574 chemins
+      [1844816773 - 2764710476] : 2326 chemins
+      [2764710476 - 3684604178] : 1630 chemins
+      [3684604178 - 4604497881] : 834 chemins
+      [4604497881 - 5524391583] : 408 chemins
+      [5524391583 - 6444285286] : 232 chemins
+      [6444285286 - 7364178988] : 90 chemins
+      [7364178988 - 8284072691] : 22 chemins
+      [8284072691 - 9203966394] : 8 chemins
+
+
+
+======================================================================
+  Densité moyenne  Portée 60km (pondéré)
+======================================================================
+
+CARACTERISTIQUES GENERALES
+
+   Nombre de satellites : 100
+   Nombre de connexions : 1782
+   Densité du réseau : 0.3600
+
+ANALYSE DES DEGRES
+
+   Degré moyen : 35.64
+   Degré minimum : 0
+   Degré maximum : 57
+   Ecart type : 15.18
+
+   Distribution des degrés :
+      [0.0 - 5.7] : 2 satellites
+      [5.7 - 11.4] : 7 satellites
+      [11.4 - 17.1] : 5 satellites
+      [17.1 - 22.8] : 7 satellites
+      [22.8 - 28.5] : 11 satellites
+      [28.5 - 34.2] : 14 satellites
+      [34.2 - 39.9] : 7 satellites
+      [39.9 - 45.6] : 17 satellites
+      [45.6 - 51.3] : 9 satellites
+      [51.3 - 57.0] : 21 satellites
+
+COEFFICIENT DE CLUSTERING
+
+   Clustering moyen : 0.7280
+   Clustering minimum : 0.0000
+   Clustering maximum : 1.0000
+   Ecart type : 0.1053
+
+   Distribution du clustering :
+      [0.00 - 0.10] : 1 satellites
+      [0.60 - 0.70] : 37 satellites
+      [0.70 - 0.80] : 45 satellites
+      [0.80 - 0.90] : 12 satellites
+      [0.90 - 1.00] : 5 satellites
+
+CLIQUES
+
+   Nombre total de cliques : 258
+   Taille de la plus grande clique : 27 satellites
+
+COMPOSANTES CONNEXES
+
+   Nombre de composantes : 2
+   Taille de la plus grande composante : 99 satellites
+   Pourcentage dans la composante principale : 99.0%
+
+PLUS COURTS CHEMINS
+
+   Longueur moyenne : 1.92 sauts
+   Longueur minimale : 1 saut
+   Longueur maximale (diamètre) : 6 sauts
+   Nombre total de plus courts chemins : 481566
+
+   Distribution des longueurs de chemins :
+      1 saut(s) : 3564 chemins
+      2 saut(s) : 3894 chemins
+      3 saut(s) : 1726 chemins
+      4 saut(s) : 452 chemins
+      5 saut(s) : 62 chemins
+      6 saut(s) : 4 chemins
+
+CHEMINS PONDERES (distance au carré)
+
+   Longueur moyenne pondérée : 1946170880.74
+   Longueur minimale : 11008036.22
+   Longueur maximale : 7606390712.91
+
+   Distribution des distances pondérées :
+      [11008036 - 770546304] : 1444 chemins
+      [770546304 - 1530084572] : 2740 chemins
+      [1530084572 - 2289622839] : 2372 chemins
+      [2289622839 - 3049161107] : 1500 chemins
+      [3049161107 - 3808699375] : 838 chemins
+      [3808699375 - 4568237642] : 438 chemins
+      [4568237642 - 5327775910] : 262 chemins
+      [5327775910 - 6087314178] : 70 chemins
+      [6087314178 - 6846852445] : 20 chemins
+      [6846852445 - 7606390713] : 18 chemins
+
+
+
+======================================================================
+  Densité forte  Portée 60km (pondéré)
+======================================================================
+
+CARACTERISTIQUES GENERALES
+
+   Nombre de satellites : 100
+   Nombre de connexions : 1870
+   Densité du réseau : 0.3778
+
+ANALYSE DES DEGRES
+
+   Degré moyen : 37.40
+   Degré minimum : 1
+   Degré maximum : 59
+   Ecart type : 17.32
+
+   Distribution des degrés :
+      [1.0 - 6.8] : 6 satellites
+      [6.8 - 12.6] : 6 satellites
+      [12.6 - 18.4] : 5 satellites
+      [18.4 - 24.2] : 8 satellites
+      [24.2 - 30.0] : 9 satellites
+      [30.0 - 35.8] : 7 satellites
+      [35.8 - 41.6] : 6 satellites
+      [41.6 - 47.4] : 16 satellites
+      [47.4 - 53.2] : 12 satellites
+      [53.2 - 59.0] : 25 satellites
+
+COEFFICIENT DE CLUSTERING
+
+   Clustering moyen : 0.7281
+   Clustering minimum : 0.0000
+   Clustering maximum : 1.0000
+   Ecart type : 0.1616
+
+   Distribution du clustering :
+      [0.00 - 0.10] : 4 satellites
+      [0.50 - 0.60] : 2 satellites
+      [0.60 - 0.70] : 13 satellites
+      [0.70 - 0.80] : 59 satellites
+      [0.80 - 0.90] : 18 satellites
+      [0.90 - 1.00] : 4 satellites
+
+CLIQUES
+
+   Nombre total de cliques : 200
+   Taille de la plus grande clique : 31 satellites
+
+COMPOSANTES CONNEXES
+
+   Nombre de composantes : 2
+   Taille de la plus grande composante : 98 satellites
+   Pourcentage dans la composante principale : 98.0%
+
+PLUS COURTS CHEMINS
+
+   Longueur moyenne : 1.98 sauts
+   Longueur minimale : 1 saut
+   Longueur maximale (diamètre) : 8 sauts
+   Nombre total de plus courts chemins : 711512
+
+   Distribution des longueurs de chemins :
+      1 saut(s) : 3738 chemins
+      2 saut(s) : 3470 chemins
+      3 saut(s) : 1488 chemins
+      4 saut(s) : 508 chemins
+      5 saut(s) : 194 chemins
+      6 saut(s) : 76 chemins
+      7 saut(s) : 24 chemins
+      8 saut(s) : 8 chemins
+
+CHEMINS PONDERES (distance au carré)
+
+   Longueur moyenne pondérée : 2181652619.53
+   Longueur minimale : 6021321.64
+   Longueur maximale : 13922605381.71
+
+   Distribution des distances pondérées :
+      [6021322 - 1397679728] : 3920 chemins
+      [1397679728 - 2789338134] : 3220 chemins
+      [2789338134 - 4180996540] : 1422 chemins
+      [4180996540 - 5572654946] : 448 chemins
+      [5572654946 - 6964313352] : 154 chemins
+      [6964313352 - 8355971758] : 122 chemins
+      [8355971758 - 9747630164] : 114 chemins
+      [9747630164 - 11139288570] : 72 chemins
+      [11139288570 - 12530946976] : 24 chemins
+      [12530946976 - 13922605382] : 10 chemins
+
+
+
+======================================================================
+TABLEAU COMPARATIF
+======================================================================
+
+Configuration                  Liens      Degré      Clustering   Nb chemins     
+----------------------------------------------------------------------
+Densité faible Portée 20km     90         1.80       0.2261       1790           
+Densité faible Portée 40km     571        11.42      0.5205       111456         
+Densité faible Portée 60km     1471       29.42      0.6724       181076         
+Densité moyenne Portée 20km    173        3.46       0.3637       100308         
+Densité moyenne Portée 40km    842        16.84      0.6370       287784         
+Densité moyenne Portée 60km    1782       35.64      0.7280       481566         
+Densité forte Portée 20km      186        3.72       0.3981       19378          
+Densité forte Portée 40km      934        18.68      0.6651       602446         
+Densité forte Portée 60km      1870       37.40      0.7281       711512         

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<netlist:Netlist xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:netlist="http://www.example.org/netlist" name="div_tension">
+  <instances id="R1">
+    <connexions net="//@nets.0">
+      <port href="file:/home/oei8498/Anne_2/IDM/workspace/fr.n7.idm.catalog/Catalogue.xmi#//@composants.0/@ports.0"/>
+    </connexions>
+    <connexions net="//@nets.1">
+      <port href="file:/home/oei8498/Anne_2/IDM/workspace/fr.n7.idm.catalog/Catalogue.xmi#//@composants.0/@ports.1"/>
+    </connexions>
+    <composant href="file:/home/oei8498/Anne_2/IDM/workspace/fr.n7.idm.catalog/Catalogue.xmi#//@composants.0"/>
+  </instances>
+  <instances id="C1">
+    <connexions net="//@nets.1">
+      <port href="file:/home/oei8498/Anne_2/IDM/workspace/fr.n7.idm.catalog/Catalogue.xmi#//@composants.1/@ports.0"/>
+    </connexions>
+    <connexions net="//@nets.2">
+      <port href="file:/home/oei8498/Anne_2/IDM/workspace/fr.n7.idm.catalog/Catalogue.xmi#//@composants.1/@ports.1"/>
+    </connexions>
+    <composant href="file:/home/oei8498/Anne_2/IDM/workspace/fr.n7.idm.catalog/Catalogue.xmi#//@composants.1"/>
+  </instances>
+  <nets name="VIN" connexions="//@instances.0/@connexions.0"/>
+  <nets name="INTER" connexions="//@instances.0/@connexions.1 //@instances.1/@connexions.0"/>
+  <nets name="VOUT" connexions="//@instances.1/@connexions.1"/>
+</netlist:Netlist>

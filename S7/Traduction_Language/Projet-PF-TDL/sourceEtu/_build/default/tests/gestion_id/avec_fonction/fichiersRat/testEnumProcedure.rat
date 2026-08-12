@@ -1,0 +1,9 @@
+enum Mode { Lecture, Ecriture };
+
+void setMode(Mode m) {
+  return;
+}
+
+main {
+  setMode(Lecture);
+}

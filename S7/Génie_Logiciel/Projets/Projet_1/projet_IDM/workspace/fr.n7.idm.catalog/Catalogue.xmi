@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog:Catalogue xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:catalog="http://www.example.org/catalog" name="catalogn7">
+  <composants name="resistence" fabricant="halawa" id="id">
+    <metadonnees cle="resistence" valeur="10" type="NOMBRE"/>
+    <ports name="A" y="0.65" type="BIDIRECTIONNEL"/>
+    <ports name="B" y="0.2"/>
+  </composants>
+  <composants name="condensateur" fabricant="hahaha" id="id">
+    <metadonnees cle="condensateur" valeur="0.7" type="NOMBRE"/>
+    <ports name="CE"/>
+    <ports name="CS" type="SORTIE"/>
+  </composants>
+</catalog:Catalogue>

@@ -1,0 +1,276 @@
+/**
+ */
+package netlist.impl;
+
+import catalog.Port;
+
+import netlist.Connexion;
+import netlist.Net;
+import netlist.NetlistPackage;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Connexion</b></em>'.
+ * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link netlist.impl.ConnexionImpl#getNet <em>Net</em>}</li>
+ *   <li>{@link netlist.impl.ConnexionImpl#getPort <em>Port</em>}</li>
+ * </ul>
+ *
+ * @generated
+ */
+public class ConnexionImpl extends MinimalEObjectImpl.Container implements Connexion {
+	/**
+	 * The cached value of the '{@link #getNet() <em>Net</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNet()
+	 * @generated
+	 * @ordered
+	 */
+	protected Net net;
+
+	/**
+	 * The cached value of the '{@link #getPort() <em>Port</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPort()
+	 * @generated
+	 * @ordered
+	 */
+	protected Port port;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConnexionImpl() {
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return NetlistPackage.Literals.CONNEXION;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Port getPort() {
+		if (port != null && port.eIsProxy()) {
+			InternalEObject oldPort = (InternalEObject)port;
+			port = (Port)eResolveProxy(oldPort);
+			if (port != oldPort) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, NetlistPackage.CONNEXION__PORT, oldPort, port));
+			}
+		}
+		return port;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Port basicGetPort() {
+		return port;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setPort(Port newPort) {
+		Port oldPort = port;
+		port = newPort;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, NetlistPackage.CONNEXION__PORT, oldPort, port));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Net getNet() {
+		if (net != null && net.eIsProxy()) {
+			InternalEObject oldNet = (InternalEObject)net;
+			net = (Net)eResolveProxy(oldNet);
+			if (net != oldNet) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, NetlistPackage.CONNEXION__NET, oldNet, net));
+			}
+		}
+		return net;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Net basicGetNet() {
+		return net;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetNet(Net newNet, NotificationChain msgs) {
+		Net oldNet = net;
+		net = newNet;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, NetlistPackage.CONNEXION__NET, oldNet, newNet);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setNet(Net newNet) {
+		if (newNet != net) {
+			NotificationChain msgs = null;
+			if (net != null)
+				msgs = ((InternalEObject)net).eInverseRemove(this, NetlistPackage.NET__CONNEXIONS, Net.class, msgs);
+			if (newNet != null)
+				msgs = ((InternalEObject)newNet).eInverseAdd(this, NetlistPackage.NET__CONNEXIONS, Net.class, msgs);
+			msgs = basicSetNet(newNet, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, NetlistPackage.CONNEXION__NET, newNet, newNet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case NetlistPackage.CONNEXION__NET:
+				if (net != null)
+					msgs = ((InternalEObject)net).eInverseRemove(this, NetlistPackage.NET__CONNEXIONS, Net.class, msgs);
+				return basicSetNet((Net)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case NetlistPackage.CONNEXION__NET:
+				return basicSetNet(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case NetlistPackage.CONNEXION__NET:
+				if (resolve) return getNet();
+				return basicGetNet();
+			case NetlistPackage.CONNEXION__PORT:
+				if (resolve) return getPort();
+				return basicGetPort();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case NetlistPackage.CONNEXION__NET:
+				setNet((Net)newValue);
+				return;
+			case NetlistPackage.CONNEXION__PORT:
+				setPort((Port)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case NetlistPackage.CONNEXION__NET:
+				setNet((Net)null);
+				return;
+			case NetlistPackage.CONNEXION__PORT:
+				setPort((Port)null);
+				return;
+		}
+		super.eUnset(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case NetlistPackage.CONNEXION__NET:
+				return net != null;
+			case NetlistPackage.CONNEXION__PORT:
+				return port != null;
+		}
+		return super.eIsSet(featureID);
+	}
+
+} //ConnexionImpl

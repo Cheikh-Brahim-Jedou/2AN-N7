@@ -1,0 +1,9 @@
+void afficherValeur(int* p){
+  print (*p);
+  return;
+}
+
+main {
+  int x = 42;
+  afficherValeur(&x);
+}

@@ -1,0 +1,27 @@
+enum Phase {Depart, EnCours, Fin};
+
+test {
+  Phase p = Depart;
+  int i = 0;
+
+  while (i < 3) {
+    print p; // Affiche l'état courant (0, puis 1, puis 1, puis 2...)
+
+    if (p = Depart) {
+      p = EnCours;
+    } else {
+      if (p = EnCours) {
+         // On reste EnCours une fois, puis on passe à Fin
+         if (i = 2) {
+           p = Fin;
+         } else {
+           p = EnCours;
+         }
+      } else {
+        print 0;
+      }
+    }
+    i = (i + 1);
+  }
+  print p; // Affiche l'état final (2)
+}

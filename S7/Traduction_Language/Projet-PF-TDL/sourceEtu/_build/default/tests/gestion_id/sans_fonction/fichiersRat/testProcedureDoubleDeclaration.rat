@@ -1,0 +1,13 @@
+void afficher(){
+  print 1;
+  return;
+}
+
+void afficher(){
+  print 2;
+  return;
+}
+
+main {
+  afficher();
+}

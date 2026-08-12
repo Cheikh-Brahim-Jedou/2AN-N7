@@ -1,0 +1,5 @@
+enum Jour {Lundi};
+test {
+  // Erreur : on ne peut pas additionner un Enum
+  print (Lundi + 1);
+}

@@ -1,0 +1,14 @@
+void a(){
+  print 1;
+  return;
+}
+
+void b(){
+  a();
+  print 2;
+  return;
+}
+
+main {
+  b();
+}

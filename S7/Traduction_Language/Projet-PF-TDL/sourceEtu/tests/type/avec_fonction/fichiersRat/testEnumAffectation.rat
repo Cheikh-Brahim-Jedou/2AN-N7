@@ -1,0 +1,5 @@
+enum Jour {Lundi};
+test {
+  // Erreur : Lundi est de type Enum Jour, x est de type Int
+  int x = Lundi;
+}

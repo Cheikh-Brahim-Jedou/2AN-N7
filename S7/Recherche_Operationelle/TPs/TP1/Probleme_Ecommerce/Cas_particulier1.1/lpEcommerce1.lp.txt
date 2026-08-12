@@ -1,0 +1,24 @@
+\* Problem: ecommerce1 *\
+
+Minimize
+ Cout: + 2 Q(1,M1,C1) + 2 Q(1,M1,C2) + 2 Q(1,M2,C1) + 2 Q(1,M2,C2)
+ + 3 Q(1,M3,C1) + 3 Q(1,M3,C2) + 3 Q(2,M1,C1) + 3 Q(2,M1,C2)
+ + Q(2,M2,C1) + Q(2,M2,C2) + 2 Q(2,M3,C1) + 2 Q(2,M3,C2)
+
+Subject To
+ RespectCapaciteDeStockMagasin(1,M1): + Q(1,M1,C1) + Q(1,M1,C2) <= 2.5
+ RespectCapaciteDeStockMagasin(1,M2): + Q(1,M2,C1) + Q(1,M2,C2) <= 3
+ RespectCapaciteDeStockMagasin(1,M3): + Q(1,M3,C1) + Q(1,M3,C2) <= 1
+ RespectCapaciteDeStockMagasin(2,M1): + Q(2,M1,C1) + Q(2,M1,C2) <= 1
+ RespectCapaciteDeStockMagasin(2,M2): + Q(2,M2,C1) + Q(2,M2,C2) <= 2
+ RespectCapaciteDeStockMagasin(2,M3): + Q(2,M3,C1) + Q(2,M3,C2) <= 3
+ RespectQuantiteArriveesCelleDemandees(1,C1): + Q(1,M1,C1) + Q(1,M2,C1)
+ + Q(1,M3,C1) = 1
+ RespectQuantiteArriveesCelleDemandees(1,C2): + Q(1,M1,C2) + Q(1,M2,C2)
+ + Q(1,M3,C2) = 3
+ RespectQuantiteArriveesCelleDemandees(2,C1): + Q(2,M1,C1) + Q(2,M2,C1)
+ + Q(2,M3,C1) = 1
+ RespectQuantiteArriveesCelleDemandees(2,C2): + Q(2,M1,C2) + Q(2,M2,C2)
+ + Q(2,M3,C2) = 1
+
+End

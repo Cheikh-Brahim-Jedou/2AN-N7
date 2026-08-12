@@ -1,0 +1,8 @@
+int calculer(){
+  print 42;
+  return;
+}
+
+main {
+  int x = calculer();
+}

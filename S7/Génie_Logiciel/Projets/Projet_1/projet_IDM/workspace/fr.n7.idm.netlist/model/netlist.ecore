@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="netlist" nsURI="http://www.example.org/netlist" nsPrefix="netlist">
+  <eClassifiers xsi:type="ecore:EClass" name="Netlist">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instances" upperBound="-1"
+        eType="#//InstanceComposant" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nets" upperBound="-1" eType="#//Net"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="commentaires" upperBound="-1"
+        eType="#//Commentaire" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InstanceComposant">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connexions" upperBound="-1"
+        eType="#//Connexion" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="composant" lowerBound="1"
+        eType="ecore:EClass ../../fr.n7.idm.catalog/model/catalog.ecore#//Composant"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Net">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connexions" upperBound="-1"
+        eType="#//Connexion" eOpposite="#//Connexion/net"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Connexion">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="net" lowerBound="1" eType="#//Net"
+        eOpposite="#//Net/connexions"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="port" lowerBound="1" eType="ecore:EClass ../../fr.n7.idm.catalog/model/catalog.ecore#//Port"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Commentaire">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="texte" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cible" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </eClassifiers>
+</ecore:EPackage>

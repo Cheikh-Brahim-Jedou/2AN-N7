@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="catalog.Catalogue"/>
+    <fullyQualifiedTypeName name="catalog.Composant"/>
+    <fullyQualifiedTypeName name="catalog.CatalogPackage"/>
+    <fullyQualifiedTypeName name="catalog.Empreinte"/>
+    <fullyQualifiedTypeName name="catalog.Metadonnee"/>
+    <fullyQualifiedTypeName name="catalog.Port"/>
+    <fullyQualifiedTypeName name="catalog.FormeFigure"/>
+    <fullyQualifiedTypeName name="catalog.util.CatalogSwitch"/>
+    <fullyQualifiedTypeName name="catalog.TypeMetadonnee"/>
+    <fullyQualifiedTypeName name="catalog.TypePort"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+</qualifiedTypeNameHistroy>

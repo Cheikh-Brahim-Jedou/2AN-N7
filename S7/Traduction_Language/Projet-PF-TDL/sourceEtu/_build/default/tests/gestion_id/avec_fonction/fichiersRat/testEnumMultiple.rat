@@ -1,0 +1,15 @@
+enum Couleur { Rouge, Vert, Bleu };
+enum Taille { Petit, Moyen, Grand };
+
+Couleur getCouleur() {
+  return Rouge;
+}
+
+Taille getTaille() {
+  return Grand;
+}
+
+main {
+  Couleur c = getCouleur();
+  Taille t = getTaille();
+}

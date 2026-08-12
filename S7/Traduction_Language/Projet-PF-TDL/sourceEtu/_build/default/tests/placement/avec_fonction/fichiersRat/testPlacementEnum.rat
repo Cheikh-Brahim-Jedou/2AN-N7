@@ -1,0 +1,11 @@
+enum Jour {Lundi, Mardi};
+
+void f (Jour e, int i) {
+  Jour loc = Mardi;
+  print loc;
+}
+
+main {
+  Jour j = Lundi;
+  f(j, 1);
+}

@@ -1,0 +1,40 @@
+# TSP pour ALPHA et 5 clients - Modèle MTZ
+
+
+set VILLES;
+set ARCS within {VILLES, VILLES};
+
+param distance{(i,j) in ARCS};
+
+# Variable binaire : 1 si on prend l'arc (i,j)
+var x{(i,j) in ARCS}, binary;
+
+# Variable d'ordre pour MTZ
+var u{i in VILLES}, >= 0;
+
+# Le dépôt est ALPHA
+param depot symbolic;
+
+# Nombre total de villes
+param n := card(VILLES);
+
+# Minimiser la distance totale
+minimize DistanceTotale: sum{(i,j) in ARCS} distance[i,j] * x[i,j];
+
+# Contraintes de degré
+subject to Depart{i in VILLES}:
+    sum{(i,j) in ARCS} x[i,j] = 1;
+
+subject to Arrivee{j in VILLES}:
+    sum{(i,j) in ARCS} x[i,j] = 1;
+
+# Contraintes MTZ pour éliminer les sous-tours
+subject to MTZ{(i,j) in ARCS: i != depot and j != depot}:
+    u[i] - u[j] + n * x[i,j] <= n - 1;
+
+
+# Fixer u[depot] = 0
+subject to FixDepot:
+    u[depot] = 0;
+
+end;

@@ -1,0 +1,9 @@
+void incrementer(ref rat r){
+  r = (r + [1/1]);
+  return;
+}
+
+main {
+  rat x = [3/4];
+  incrementer(ref x);
+}

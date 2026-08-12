@@ -1,0 +1,4 @@
+enum Jour {Lundi, Mardi};
+enum Jour {Mercredi};
+test {
+}

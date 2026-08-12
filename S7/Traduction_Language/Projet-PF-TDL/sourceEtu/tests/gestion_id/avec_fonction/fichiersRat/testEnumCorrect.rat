@@ -1,0 +1,9 @@
+enum Jour {Lundi, Mardi};
+test {
+  Jour x = Lundi;
+  if (x = Lundi) {
+    print 1;
+  } else {
+    print 0;
+  }
+}

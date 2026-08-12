@@ -1,0 +1,10 @@
+int* creer(int val) {
+  int* p = (new int);
+  (*p) = val;
+  return p;
+}
+
+main {
+  int* q = creer(42);
+  print (*q);
+}

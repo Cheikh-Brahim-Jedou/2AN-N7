@@ -1,0 +1,10 @@
+int f(ref int a, int b){
+  a = (a + b);
+  return a;
+}
+
+main {
+  int x = 0;
+  int r = f(ref x, 3);
+  print r;
+}

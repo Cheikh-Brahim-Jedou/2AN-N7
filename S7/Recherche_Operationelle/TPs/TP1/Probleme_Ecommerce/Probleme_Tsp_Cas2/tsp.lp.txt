@@ -1,0 +1,123 @@
+\* Problem: tsp *\
+
+Minimize
+ DistanceTotale: + x(ALPHA,C1) + 2 x(ALPHA,C2) + 10 x(ALPHA,C3)
+ + 12 x(ALPHA,C4) + 15 x(ALPHA,C5) + x(C1,ALPHA) + x(C1,C2) + 8 x(C1,C3)
+ + 10 x(C1,C4) + 11 x(C1,C5) + 2 x(C2,ALPHA) + x(C2,C1) + 8 x(C2,C3)
+ + 13 x(C2,C4) + 10 x(C2,C5) + 10 x(C3,ALPHA) + 8 x(C3,C1) + 8 x(C3,C2)
+ + x(C3,C4) + x(C3,C5) + 12 x(C4,ALPHA) + 10 x(C4,C1) + 13 x(C4,C2)
+ + x(C4,C3) + 2 x(C4,C5) + 15 x(C5,ALPHA) + 11 x(C5,C1) + 10 x(C5,C2)
+ + x(C5,C3) + 2 x(C5,C4)
+
+Subject To
+ Depart(ALPHA): + x(ALPHA,C1) + x(ALPHA,C2) + x(ALPHA,C3) + x(ALPHA,C4)
+ + x(ALPHA,C5) = 1
+ Depart(C1): + x(C1,ALPHA) + x(C1,C2) + x(C1,C3) + x(C1,C4) + x(C1,C5)
+ = 1
+ Depart(C2): + x(C2,ALPHA) + x(C2,C1) + x(C2,C3) + x(C2,C4) + x(C2,C5)
+ = 1
+ Depart(C3): + x(C3,ALPHA) + x(C3,C1) + x(C3,C2) + x(C3,C4) + x(C3,C5)
+ = 1
+ Depart(C4): + x(C4,ALPHA) + x(C4,C1) + x(C4,C2) + x(C4,C3) + x(C4,C5)
+ = 1
+ Depart(C5): + x(C5,ALPHA) + x(C5,C1) + x(C5,C2) + x(C5,C3) + x(C5,C4)
+ = 1
+ Arrivee(ALPHA): + x(C1,ALPHA) + x(C2,ALPHA) + x(C3,ALPHA) + x(C4,ALPHA)
+ + x(C5,ALPHA) = 1
+ Arrivee(C1): + x(ALPHA,C1) + x(C2,C1) + x(C3,C1) + x(C4,C1) + x(C5,C1)
+ = 1
+ Arrivee(C2): + x(ALPHA,C2) + x(C1,C2) + x(C3,C2) + x(C4,C2) + x(C5,C2)
+ = 1
+ Arrivee(C3): + x(ALPHA,C3) + x(C1,C3) + x(C2,C3) + x(C4,C3) + x(C5,C3)
+ = 1
+ Arrivee(C4): + x(ALPHA,C4) + x(C1,C4) + x(C2,C4) + x(C3,C4) + x(C5,C4)
+ = 1
+ Arrivee(C5): + x(ALPHA,C5) + x(C1,C5) + x(C2,C5) + x(C3,C5) + x(C4,C5)
+ = 1
+ MTZ(C1,C2): + 6 x(C1,C2) - u(C2) + u(C1) <= 5
+ MTZ(C1,C3): + 6 x(C1,C3) + u(C1) - u(C3) <= 5
+ MTZ(C1,C4): + 6 x(C1,C4) + u(C1) - u(C4) <= 5
+ MTZ(C1,C5): + 6 x(C1,C5) + u(C1) - u(C5) <= 5
+ MTZ(C2,C1): + 6 x(C2,C1) + u(C2) - u(C1) <= 5
+ MTZ(C2,C3): + 6 x(C2,C3) + u(C2) - u(C3) <= 5
+ MTZ(C2,C4): + 6 x(C2,C4) + u(C2) - u(C4) <= 5
+ MTZ(C2,C5): + 6 x(C2,C5) + u(C2) - u(C5) <= 5
+ MTZ(C3,C1): + 6 x(C3,C1) - u(C1) + u(C3) <= 5
+ MTZ(C3,C2): + 6 x(C3,C2) - u(C2) + u(C3) <= 5
+ MTZ(C3,C4): + 6 x(C3,C4) + u(C3) - u(C4) <= 5
+ MTZ(C3,C5): + 6 x(C3,C5) + u(C3) - u(C5) <= 5
+ MTZ(C4,C1): + 6 x(C4,C1) - u(C1) + u(C4) <= 5
+ MTZ(C4,C2): + 6 x(C4,C2) - u(C2) + u(C4) <= 5
+ MTZ(C4,C3): + 6 x(C4,C3) - u(C3) + u(C4) <= 5
+ MTZ(C4,C5): + 6 x(C4,C5) + u(C4) - u(C5) <= 5
+ MTZ(C5,C1): + 6 x(C5,C1) - u(C1) + u(C5) <= 5
+ MTZ(C5,C2): + 6 x(C5,C2) - u(C2) + u(C5) <= 5
+ MTZ(C5,C3): + 6 x(C5,C3) - u(C3) + u(C5) <= 5
+ MTZ(C5,C4): + 6 x(C5,C4) - u(C4) + u(C5) <= 5
+ FixDepot: + u(ALPHA) = -0
+
+Bounds
+ 0 <= x(ALPHA,C1) <= 1
+ 0 <= x(ALPHA,C2) <= 1
+ 0 <= x(ALPHA,C3) <= 1
+ 0 <= x(ALPHA,C4) <= 1
+ 0 <= x(ALPHA,C5) <= 1
+ 0 <= x(C1,ALPHA) <= 1
+ 0 <= x(C1,C2) <= 1
+ 0 <= x(C1,C3) <= 1
+ 0 <= x(C1,C4) <= 1
+ 0 <= x(C1,C5) <= 1
+ 0 <= x(C2,ALPHA) <= 1
+ 0 <= x(C2,C1) <= 1
+ 0 <= x(C2,C3) <= 1
+ 0 <= x(C2,C4) <= 1
+ 0 <= x(C2,C5) <= 1
+ 0 <= x(C3,ALPHA) <= 1
+ 0 <= x(C3,C1) <= 1
+ 0 <= x(C3,C2) <= 1
+ 0 <= x(C3,C4) <= 1
+ 0 <= x(C3,C5) <= 1
+ 0 <= x(C4,ALPHA) <= 1
+ 0 <= x(C4,C1) <= 1
+ 0 <= x(C4,C2) <= 1
+ 0 <= x(C4,C3) <= 1
+ 0 <= x(C4,C5) <= 1
+ 0 <= x(C5,ALPHA) <= 1
+ 0 <= x(C5,C1) <= 1
+ 0 <= x(C5,C2) <= 1
+ 0 <= x(C5,C3) <= 1
+ 0 <= x(C5,C4) <= 1
+
+Generals
+ x(ALPHA,C1)
+ x(ALPHA,C2)
+ x(ALPHA,C3)
+ x(ALPHA,C4)
+ x(ALPHA,C5)
+ x(C1,ALPHA)
+ x(C1,C2)
+ x(C1,C3)
+ x(C1,C4)
+ x(C1,C5)
+ x(C2,ALPHA)
+ x(C2,C1)
+ x(C2,C3)
+ x(C2,C4)
+ x(C2,C5)
+ x(C3,ALPHA)
+ x(C3,C1)
+ x(C3,C2)
+ x(C3,C4)
+ x(C3,C5)
+ x(C4,ALPHA)
+ x(C4,C1)
+ x(C4,C2)
+ x(C4,C3)
+ x(C4,C5)
+ x(C5,ALPHA)
+ x(C5,C1)
+ x(C5,C2)
+ x(C5,C3)
+ x(C5,C4)
+
+End

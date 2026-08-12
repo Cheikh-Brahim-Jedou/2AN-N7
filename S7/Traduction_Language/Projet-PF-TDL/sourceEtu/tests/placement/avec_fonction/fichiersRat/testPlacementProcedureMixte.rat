@@ -1,0 +1,11 @@
+void afficher(int x, rat r){
+  int y = x;
+  print y;
+  print r;
+  return;
+}
+
+main {
+  rat r = [3/4];
+  afficher(5, r);
+}

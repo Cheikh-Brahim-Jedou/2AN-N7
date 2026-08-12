@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog:Catalogue xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:catalog="http://www.example.org/catalog" name="CatalogueN7">
+  <composants name="Resistance_10k" fabricant="vishay" id="RES_10K">
+    <metadonnees cle="resistence" valeur="1000" type="NOMBRE"/>
+    <metadonnees cle="boitier" valeur="0805"/>
+    <empreinte largeur="2.0" hauteur="1.25"/>
+    <ports name="Pin1" y="0.625" type="BIDIRECTIONNEL"/>
+    <ports name="Pin2" x="2.0" y="0.625" type="BIDIRECTIONNEL"/>
+  </composants>
+</catalog:Catalogue>

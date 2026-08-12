@@ -1,0 +1,22 @@
+# Modèle PLNE pour l'affectation avec préférences
+
+
+set PERSONNES;
+set TACHES;
+
+param pref{i in PERSONNES, j in TACHES};
+
+# Variable binaire : 1 si personne i fait tâche j
+var x{i in PERSONNES, j in TACHES}, binary;
+
+# Maximiser la somme des préférences
+maximize SatisfactionTotale: sum{i in PERSONNES, j in TACHES} pref[i,j] * x[i,j];
+
+# Contraintes
+subject to UneTacheParPersonne{i in PERSONNES}:
+    sum{j in TACHES} x[i,j] = 1;
+
+subject to UnePersonneParTache{j in TACHES}:
+    sum{i in PERSONNES} x[i,j] = 1;
+
+end;

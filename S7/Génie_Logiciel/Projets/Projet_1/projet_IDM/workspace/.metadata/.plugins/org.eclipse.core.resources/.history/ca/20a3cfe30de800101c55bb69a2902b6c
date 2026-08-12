@@ -1,0 +1,557 @@
+package layout.validation;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import layout.*;
+import layout.util.LayoutSwitch;
+import netlist.InstanceComposant;
+import netlist.Netlist;
+import netlist.Net;
+import catalog.Empreinte;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+/**
+ * Validateur pour les modèles Layout.
+ * Vérifie les contraintes de cohérence, placement géométrique et cohérence avec la Netlist.
+ *
+ * @author Oussama
+ * @version 1.0
+ */
+public class LayoutValidator extends LayoutSwitch<Boolean> {
+   
+    /** Expression régulière pour un identifiant valide */
+    private static final String IDENT_REGEX = "^[A-Za-z_][A-Za-z0-9_]*$";
+   
+    /** Résultat de la validation */
+    private ValidationResult result = null;
+   
+    /**
+     * Constructeur
+     */
+    public LayoutValidator() {}
+   
+    /**
+     * Lance la validation d'une ressource.
+     * @param resource ressource à valider
+     * @return résultat de validation
+     */
+    public ValidationResult validate(Resource resource) {
+        this.result = new ValidationResult();
+       
+        for (EObject object : resource.getContents()) {
+            this.doSwitch(object);
+        }
+       
+        return this.result;
+    }
+   
+    /**
+     * Validation d'un Layout.
+     */
+    @Override
+    public Boolean caseLayout(Layout object) {
+        // L1.1 : Nom non vide
+        this.result.recordIfFailed(
+            object.getName() != null && !object.getName().isEmpty(),
+            object,
+            "Le nom du layout ne doit pas être vide"
+        );
+       
+        // L1.2 : Nom valide
+        this.result.recordIfFailed(
+            object.getName() != null && object.getName().matches(IDENT_REGEX),
+            object,
+            "Le nom du layout ne respecte pas les conventions (identifiant valide)"
+        );
+       
+        // L1.3 : Référence vers Netlist valide (CRITIQUE)
+        this.result.recordIfFailed(
+            object.getNetlist() != null,
+            object,
+            "Le layout doit référencer une netlist"
+        );
+       
+        // L1.4 : Au moins un board
+        this.result.recordIfFailed(
+            object.getBoards().size() > 0,
+            object,
+            "Le layout doit contenir au moins un board"
+        );
+       
+        // Visiter les boards
+        for (Board board : object.getBoards()) {
+            this.doSwitch(board);
+        }
+       
+        // Vérifications globales de cohérence Layout <-> Netlist
+        if (object.getNetlist() != null) {
+            verifierToutesInstancesPlacees(object);
+            verifierTousNetsRoutes(object);
+        }
+       
+        return null;
+    }
+   
+    /**
+     * Validation d'un Board.
+     */
+    @Override
+    public Boolean caseBoard(Board object) {
+        // L2.1 : Nom non vide
+        this.result.recordIfFailed(
+            object.getName() != null && !object.getName().isEmpty(),
+            object,
+            "Le nom du board ne doit pas être vide"
+        );
+       
+        // L2.2 : Dimensions valides
+        this.result.recordIfFailed(
+            object.getLargeur() > 0,
+            object,
+            "La largeur du board doit être positive"
+        );
+       
+        this.result.recordIfFailed(
+            object.getHauteur() > 0,
+            object,
+            "La hauteur du board doit être positive"
+        );
+       
+        // L2.3 : Au moins 2 couches (IMPORTANT)
+        this.result.recordIfFailed(
+            object.getCouches().size() >= 2,
+            object,
+            "Un board doit avoir au moins 2 couches (top et bottom minimum)"
+        );
+       
+        // L2.4 : Première et dernière couches sont externes (IMPORTANT)
+        if (object.getCouches().size() >= 2) {
+            this.result.recordIfFailed(
+                object.getCouches().get(0) instanceof Coucheexterne,
+                object,
+                "La première couche doit être une CoucheExterne (Top)"
+            );
+           
+            int lastIndex = object.getCouches().size() - 1;
+            this.result.recordIfFailed(
+                object.getCouches().get(lastIndex) instanceof Coucheexterne,
+                object,
+                "La dernière couche doit être une CoucheExterne (Bottom)"
+            );
+        }
+       
+        // L2.5 : Numéros de couches séquentiels et uniques
+        verifierNumeroCouchesSequentiels(object);
+       
+        // Visiter les couches
+        for (Couche couche : object.getCouches()) {
+            this.doSwitch(couche);
+        }
+       
+        return null;
+    }
+   
+    /**
+     * Validation d'une Couche.
+     */
+    @Override
+    public Boolean caseCouche(Couche object) {
+        // L3.1 : Nom non vide
+        this.result.recordIfFailed(
+            object.getName() != null && !object.getName().isEmpty(),
+            object,
+            "Le nom de la couche ne doit pas être vide"
+        );
+       
+        // L3.2 : Numéro valide
+        this.result.recordIfFailed(
+            object.getNumero() > 0,
+            object,
+            "Le numéro de la couche doit être positif"
+        );
+       
+        // L3.3 : Nom unique dans le Board
+        Board board = (Board) object.eContainer();
+        if (board != null) {
+            long count = board.getCouches().stream()
+                .filter(c -> c.getName() != null && c.getName().equals(object.getName()))
+                .count();
+           
+            this.result.recordIfFailed(
+                count == 1,
+                object,
+                "Le nom de la couche '" + object.getName() + "' n'est pas unique dans le board"
+            );
+        }
+       
+        // Visiter les pistes
+        for (Piste piste : object.getPistes()) {
+            this.doSwitch(piste);
+        }
+       
+        return null;
+    }
+   
+    /**
+     * Validation d'une CoucheExterne.
+     */
+    @Override
+    public Boolean caseCoucheexterne(Coucheexterne object) {
+        // D'abord valider en tant que Couche
+        caseCouche(object);
+       
+        // Visiter les composants placés
+        for (ComposantPlace cp : object.getComposantPlaces()) {
+            this.doSwitch(cp);
+        }
+       
+        // Vérifier pas de chevauchement entre composants
+        verifierPasChevauchement(object);
+       
+        return null;
+    }
+   
+    /**
+     * Validation d'une CoucheInterne.
+     */
+    @Override
+    public Boolean caseCoucheinterne(Coucheinterne object) {
+        // D'abord valider en tant que Couche
+        caseCouche(object);
+       
+        // L3.4 : CoucheInterne n'a pas de composants
+        // Cette contrainte est déjà garantie par le méta-modèle
+       
+        return null;
+    }
+   
+    /**
+     * Validation d'un ComposantPlace.
+     */
+    @Override
+    public Boolean caseComposantPlace(ComposantPlace object) {
+        // L4.1 : Instance référencée existe
+        this.result.recordIfFailed(
+            object.getInstance() != null,
+            object,
+            "Le composant placé doit référencer une instance de la netlist"
+        );
+       
+        // L4.2 : Instance appartient à la Netlist du Layout (CRITIQUE)
+        Layout layout = getLayoutFromComposantPlace(object);
+        if (layout != null && layout.getNetlist() != null && object.getInstance() != null) {
+            boolean appartient = layout.getNetlist().getInstances()
+                .contains(object.getInstance());
+           
+            this.result.recordIfFailed(
+                appartient,
+                object,
+                "L'instance '" + object.getInstance().getId()
+                + "' n'appartient pas à la netlist de ce layout"
+            );
+        }
+       
+        // L4.3 : Coordonnées dans les limites du Board
+        Board board = getBoardFromComposantPlace(object);
+        if (board != null) {
+            this.result.recordIfFailed(
+                object.getX() >= 0 && object.getX() <= board.getLargeur(),
+                object,
+                "La coordonnée X du composant doit être entre 0 et " + board.getLargeur()
+            );
+           
+            this.result.recordIfFailed(
+                object.getY() >= 0 && object.getY() <= board.getHauteur(),
+                object,
+                "La coordonnée Y du composant doit être entre 0 et " + board.getHauteur()
+            );
+        }
+       
+        // L4.4 : Rotation valide (0-360°)
+        this.result.recordIfFailed(
+            object.getRotation() >= 0 && object.getRotation() < 360,
+            object,
+            "La rotation doit être entre 0 et 360 degrés (actuellement: "
+            + object.getRotation() + ")"
+        );
+       
+        // L4.6 : Chaque instance n'est placée qu'une seule fois (IMPORTANT)
+        if (layout != null && object.getInstance() != null) {
+            long count = layout.getBoards().stream()
+                .flatMap(b -> b.getCouches().stream())
+                .filter(c -> c instanceof Coucheexterne)
+                .flatMap(c -> ((Coucheexterne) c).getComposantPlaces().stream())
+                .filter(cp -> cp.getInstance() != null
+                           && cp.getInstance().equals(object.getInstance()))
+                .count();
+           
+            this.result.recordIfFailed(
+                count == 1,
+                object,
+                "L'instance '" + object.getInstance().getId()
+                + "' est placée plusieurs fois sur le PCB"
+            );
+        }
+       
+        return null;
+    }
+   
+    /**
+     * Validation d'une Piste.
+     */
+    @Override
+    public Boolean casePiste(Piste object) {
+        // L5.1 : Largeur positive
+        this.result.recordIfFailed(
+            object.getLargeur() > 0,
+            object,
+            "La largeur de la piste doit être positive"
+        );
+       
+        // L5.2 : Au moins 2 points
+        this.result.recordIfFailed(
+            object.getPoints().size() >= 2,
+            object,
+            "Une piste doit avoir au moins 2 points (début et fin)"
+        );
+       
+        // L5.3 : Points dans les limites du Board
+        Board board = getBoardFromPiste(object);
+        if (board != null) {
+            for (Point p : object.getPoints()) {
+                this.result.recordIfFailed(
+                    p.getX() >= 0 && p.getX() <= board.getLargeur(),
+                    object,
+                    "Point de la piste hors limites (X=" + p.getX() + ")"
+                );
+               
+                this.result.recordIfFailed(
+                    p.getY() >= 0 && p.getY() <= board.getHauteur(),
+                    object,
+                    "Point de la piste hors limites (Y=" + p.getY() + ")"
+                );
+            }
+        }
+       
+        // L5.4 : Si Net est défini, il doit appartenir à la Netlist (IMPORTANT)
+        Layout layout = getLayoutFromPiste(object);
+        if (layout != null && layout.getNetlist() != null && object.getNet() != null) {
+            boolean appartient = layout.getNetlist().getNets()
+                .contains(object.getNet());
+           
+            this.result.recordIfFailed(
+                appartient,
+                object,
+                "Le net '" + object.getNet().getName()
+                + "' de la piste n'appartient pas à la netlist"
+            );
+        }
+       
+        return null;
+    }
+   
+    /**
+     * L6.1 : Vérifier que toutes les instances de la Netlist sont placées.
+     */
+    private void verifierToutesInstancesPlacees(Layout layout) {
+        Netlist netlist = layout.getNetlist();
+       
+        // Récupérer toutes les instances placées
+        Set<InstanceComposant> instancesPlacees = layout.getBoards().stream()
+            .flatMap(b -> b.getCouches().stream())
+            .filter(c -> c instanceof CoucheExterne)
+            .flatMap(c -> ((CoucheExterne) c).getComposantsPlaces().stream())
+            .map(cp -> cp.getInstance())
+            .collect(Collectors.toSet());
+       
+        // Vérifier que chaque instance de la netlist est placée
+        for (InstanceComposant instance : netlist.getInstances()) {
+            if (!instancesPlacees.contains(instance)) {
+                this.result.recordError(
+                    layout,
+                    "ERREUR : L'instance '" + instance.getId()
+                    + "' de la netlist n'est pas placée sur le PCB"
+                );
+            }
+        }
+    }
+   
+    /**
+     * L6.2 : Vérifier que tous les Nets de la Netlist ont des pistes.
+     */
+    private void verifierTousNetsRoutes(Layout layout) {
+        Netlist netlist = layout.getNetlist();
+       
+        // Récupérer tous les nets routés
+        Set<Reseau> netsRoutes = layout.getBoards().stream()
+            .flatMap(b -> b.getCouches().stream())
+            .flatMap(c -> c.getPistes().stream())
+            .map(p -> p.getNet())
+            .filter(net -> net != null)
+            .collect(Collectors.toSet());
+       
+        // Vérifier que chaque net de la netlist est routé
+        for (Reseau net : netlist.getReseaux()) {
+            if (!netsRoutes.contains(net)) {
+                this.result.recordError(
+                    layout,
+                    "WARNING : Le net '" + net.getName()
+                    + "' de la netlist n'a pas de piste sur le PCB"
+                );
+            }
+        }
+    }
+   
+    /**
+     * L2.5 : Vérifier que les numéros de couches sont séquentiels.
+     */
+    private void verifierNumeroCouchesSequentiels(Board board) {
+        List<Couche> couches = board.getCouches();
+       
+        for (int i = 0; i < couches.size(); i++) {
+            int numeroAttendu = i + 1;
+            int numeroActuel = couches.get(i).getNumero();
+           
+            this.result.recordIfFailed(
+                numeroActuel == numeroAttendu,
+                board,
+                "Les numéros de couches doivent être séquentiels. Attendu: "
+                + numeroAttendu + ", Actuel: " + numeroActuel
+            );
+        }
+    }
+   
+    /**
+     * L4.5 : Vérifier qu'il n'y a pas de chevauchement entre composants.
+     */
+    private void verifierPasChevauchement(CoucheExterne couche) {
+        List<ComposantPlace> composants = couche.getComposantsPlaces();
+       
+        for (int i = 0; i < composants.size(); i++) {
+            for (int j = i + 1; j < composants.size(); j++) {
+                ComposantPlace cp1 = composants.get(i);
+                ComposantPlace cp2 = composants.get(j);
+               
+                if (checkOverlap(cp1, cp2)) {
+                    this.result.recordError(
+                        couche,
+                        "ERREUR : Chevauchement entre '"
+                        + cp1.getInstance().getId() + "' et '"
+                        + cp2.getInstance().getId() + "' sur la couche '"
+                        + couche.getName() + "'"
+                    );
+                }
+            }
+        }
+    }
+   
+    /**
+     * Vérifie si deux composants se chevauchent.
+     */
+    private boolean checkOverlap(ComposantPlace cp1, ComposantPlace cp2) {
+        if (cp1.getInstance() == null || cp2.getInstance() == null) {
+            return false;
+        }
+       
+        if (cp1.getInstance().getComposant() == null
+         || cp2.getInstance().getComposant() == null) {
+            return false;
+        }
+       
+        Empreinte e1 = cp1.getInstance().getComposant().getEmpreinte();
+        Empreinte e2 = cp2.getInstance().getComposant().getEmpreinte();
+       
+        if (e1 == null || e2 == null) {
+            return false;
+        }
+       
+        // Calculer les rectangles englobants (axis-aligned)
+        double x1_min = cp1.getX();
+        double x1_max = cp1.getX() + e1.getLargeur();
+        double y1_min = cp1.getY();
+        double y1_max = cp1.getY() + e1.getHauteur();
+       
+        double x2_min = cp2.getX();
+        double x2_max = cp2.getX() + e2.getLargeur();
+        double y2_min = cp2.getY();
+        double y2_max = cp2.getY() + e2.getHauteur();
+       
+        // Chevauchement si les rectangles se croisent
+        return !(x1_max <= x2_min || x2_max <= x1_min ||
+                 y1_max <= y2_min || y2_max <= y1_min);
+    }
+   
+    /**
+     * Récupère le Layout depuis un ComposantPlace.
+     */
+    private Layout getLayoutFromComposantPlace(ComposantPlace cp) {
+        EObject current = cp.eContainer(); // CoucheExterne
+        if (current != null) {
+            current = current.eContainer(); // Board
+            if (current != null) {
+                current = current.eContainer(); // Layout
+                if (current instanceof Layout) {
+                    return (Layout) current;
+                }
+            }
+        }
+        return null;
+    }
+   
+    /**
+     * Récupère le Board depuis un ComposantPlace.
+     */
+    private Board getBoardFromComposantPlace(ComposantPlace cp) {
+        EObject current = cp.eContainer(); // CoucheExterne
+        if (current != null) {
+            current = current.eContainer(); // Board
+            if (current instanceof Board) {
+                return (Board) current;
+            }
+        }
+        return null;
+    }
+   
+    /**
+     * Récupère le Layout depuis une Piste.
+     */
+    private Layout getLayoutFromPiste(Piste piste) {
+        EObject current = piste.eContainer(); // Couche
+        if (current != null) {
+            current = current.eContainer(); // Board
+            if (current != null) {
+                current = current.eContainer(); // Layout
+                if (current instanceof Layout) {
+                    return (Layout) current;
+                }
+            }
+        }
+        return null;
+    }
+   
+    /**
+     * Récupère le Board depuis une Piste.
+     */
+    private Board getBoardFromPiste(Piste piste) {
+        EObject current = piste.eContainer(); // Couche
+        if (current != null) {
+            current = current.eContainer(); // Board
+            if (current instanceof Board) {
+                return (Board) current;
+            }
+        }
+        return null;
+    }
+   
+    /**
+     * Cas par défaut.
+     */
+    @Override
+    public Boolean defaultCase(EObject object) {
+        return null;
+    }
+}

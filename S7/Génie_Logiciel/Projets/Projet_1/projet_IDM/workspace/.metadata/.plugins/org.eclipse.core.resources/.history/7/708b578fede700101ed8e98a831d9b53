@@ -1,0 +1,270 @@
+/**
+ */
+package netlist.impl;
+
+import catalog.Composant;
+
+import java.util.Collection;
+
+import netlist.Connexion;
+import netlist.InstanceComposant;
+import netlist.NetlistPackage;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Instance Composant</b></em>'.
+ * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link netlist.impl.InstanceComposantImpl#getId <em>Id</em>}</li>
+ *   <li>{@link netlist.impl.InstanceComposantImpl#getComposant <em>Composant</em>}</li>
+ *   <li>{@link netlist.impl.InstanceComposantImpl#getConnexions <em>Connexions</em>}</li>
+ * </ul>
+ *
+ * @generated
+ */
+public class InstanceComposantImpl extends MinimalEObjectImpl.Container implements InstanceComposant {
+	/**
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String id = ID_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getComposant() <em>Composant</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getComposant()
+	 * @generated
+	 * @ordered
+	 */
+	protected Composant composant;
+
+	/**
+	 * The cached value of the '{@link #getConnexions() <em>Connexions</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConnexions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Connexion> connexions;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InstanceComposantImpl() {
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return NetlistPackage.Literals.INSTANCE_COMPOSANT;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Composant getComposant() {
+		if (composant != null && composant.eIsProxy()) {
+			InternalEObject oldComposant = (InternalEObject)composant;
+			composant = (Composant)eResolveProxy(oldComposant);
+			if (composant != oldComposant) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, NetlistPackage.INSTANCE_COMPOSANT__COMPOSANT, oldComposant, composant));
+			}
+		}
+		return composant;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Composant basicGetComposant() {
+		return composant;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setComposant(Composant newComposant) {
+		Composant oldComposant = composant;
+		composant = newComposant;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, NetlistPackage.INSTANCE_COMPOSANT__COMPOSANT, oldComposant, composant));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<Connexion> getConnexions() {
+		if (connexions == null) {
+			connexions = new EObjectContainmentEList<Connexion>(Connexion.class, this, NetlistPackage.INSTANCE_COMPOSANT__CONNEXIONS);
+		}
+		return connexions;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case NetlistPackage.INSTANCE_COMPOSANT__CONNEXIONS:
+				return ((InternalEList<?>)getConnexions()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case NetlistPackage.INSTANCE_COMPOSANT__ID:
+				return getId();
+			case NetlistPackage.INSTANCE_COMPOSANT__COMPOSANT:
+				if (resolve) return getComposant();
+				return basicGetComposant();
+			case NetlistPackage.INSTANCE_COMPOSANT__CONNEXIONS:
+				return getConnexions();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case NetlistPackage.INSTANCE_COMPOSANT__COMPOSANT:
+				setComposant((Composant)newValue);
+				return;
+			case NetlistPackage.INSTANCE_COMPOSANT__CONNEXIONS:
+				getConnexions().clear();
+				getConnexions().addAll((Collection<? extends Connexion>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case NetlistPackage.INSTANCE_COMPOSANT__COMPOSANT:
+				setComposant((Composant)null);
+				return;
+			case NetlistPackage.INSTANCE_COMPOSANT__CONNEXIONS:
+				getConnexions().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case NetlistPackage.INSTANCE_COMPOSANT__ID:
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+			case NetlistPackage.INSTANCE_COMPOSANT__COMPOSANT:
+				return composant != null;
+			case NetlistPackage.INSTANCE_COMPOSANT__CONNEXIONS:
+				return connexions != null && !connexions.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (id: ");
+		result.append(id);
+		result.append(')');
+		return result.toString();
+	}
+
+} //InstanceComposantImpl

@@ -1,0 +1,270 @@
+package catalog.validation;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import catalog.*;
+import catalog.util.CatalogSwitch;
+
+/**
+ * Validateur pour les modèles Catalogue.
+ * Vérifie les contraintes de cohérence et de nommage.
+ * 
+ * @author Oussama
+ * @version 1.0
+ */
+public class CatalogValidator extends CatalogSwitch<Boolean> {
+    
+    /** Expression régulière pour un identifiant valide */
+    private static final String IDENT_REGEX = "^[A-Za-z_][A-Za-z0-9_]*$";
+    
+    /** Résultat de la validation */
+    private ValidationResult result = null;
+    
+    /**
+     * Constructeur
+     */
+    public CatalogValidator() {}
+    
+    /**
+     * Lance la validation d'une ressource.
+     * @param resource ressource à valider
+     * @return résultat de validation
+     */
+    public ValidationResult validate(Resource resource) {
+        this.result = new ValidationResult();
+        
+        for (EObject object : resource.getContents()) {
+            this.doSwitch(object);
+        }
+        
+        return this.result;
+    }
+    
+    /**
+     * Validation d'un Catalogue.
+     */
+    @Override
+    public Boolean caseCatalogue(Catalogue object) {
+        // C1.1 : Nom non vide
+        this.result.recordIfFailed(
+            object.getName() != null && !object.getName().isEmpty(),
+            object,
+            "Le nom du catalogue ne doit pas être vide"
+        );
+        
+        // C1.2 : Nom valide
+        this.result.recordIfFailed(
+            object.getName() != null && object.getName().matches(IDENT_REGEX),
+            object,
+            "Le nom du catalogue ne respecte pas les conventions (identifiant valide)"
+        );
+        
+        // Visiter les composants
+        for (Composant c : object.getComposants()) {
+            this.doSwitch(c);
+        }
+        
+        return null;
+    }
+    
+    /**
+     * Validation d'un Composant.
+     */
+    @Override
+    public Boolean caseComposant(Composant object) {
+        // C2.1 : ID non vide
+        this.result.recordIfFailed(
+            object.getId() != null && !object.getId().isEmpty(),
+            object,
+            "L'ID du composant ne doit pas être vide"
+        );
+        
+        // C2.2 : ID valide
+        this.result.recordIfFailed(
+            object.getId() != null && object.getId().matches(IDENT_REGEX),
+            object,
+            "L'ID du composant ne respecte pas les conventions"
+        );
+        
+        // C2.3 : ID unique dans le catalogue
+        Catalogue catalogue = (Catalogue) object.eContainer();
+        if (catalogue != null) {
+            long count = catalogue.getComposants().stream()
+                .filter(c -> c.getId() != null && c.getId().equals(object.getId()))
+                .count();
+            
+            this.result.recordIfFailed(
+                count == 1,
+                object,
+                "L'ID du composant '" + object.getId() + "' n'est pas unique dans le catalogue"
+            );
+        }
+        
+        // C2.4 : Nom non vide
+        this.result.recordIfFailed(
+            object.getName() != null && !object.getNom().isEmpty(),
+            object,
+            "Le nom du composant ne doit pas être vide"
+        );
+        
+        // C2.6 : Si empreinte existe, elle doit être valide
+        if (object.getEmpreinte() != null) {
+            this.doSwitch(object.getEmpreinte());
+        }
+        
+        // Visiter les ports
+        for (Port p : object.getPorts()) {
+            this.doSwitch(p);
+        }
+        
+        // Visiter les métadonnées
+        for (Metadonnee m : object.getMetadonnees()) {
+            this.doSwitch(m);
+        }
+        
+        return null;
+    }
+    
+    /**
+     * Validation d'une Métadonnée.
+     */
+    @Override
+    public Boolean caseMetadonnee(Metadonnee object) {
+        // C3.1 : Clé non vide
+        this.result.recordIfFailed(
+            object.getCle() != null && !object.getCle().isEmpty(),
+            object,
+            "La clé de la métadonnée ne doit pas être vide"
+        );
+        
+        // C3.2 : Valeur non vide
+        this.result.recordIfFailed(
+            object.getValeur() != null && !object.getValeur().isEmpty(),
+            object,
+            "La valeur de la métadonnée ne doit pas être vide"
+        );
+        
+        // C3.3 : Si type NOMBRE, valeur doit être numérique
+        if (object.getType() == TypeMetadonnee.NOMBRE) {
+            try {
+                Double.parseDouble(object.getValeur());
+            } catch (NumberFormatException e) {
+                this.result.recordError(
+                    object,
+                    "La métadonnée de type NOMBRE doit avoir une valeur numérique ('" 
+                    + object.getValeur() + "' n'est pas valide)"
+                );
+            }
+        }
+        
+        // C3.4 : Si type BOOLEEN, valeur doit être true ou false
+        if (object.getType() == TypeMetadonnee.BOOLEEN) {
+            this.result.recordIfFailed(
+                object.getValeur().equals("true") || object.getValeur().equals("false"),
+                object,
+                "La métadonnée de type BOOLEEN doit avoir 'true' ou 'false' comme valeur"
+            );
+        }
+        
+        // C3.5 : Pas de clés dupliquées
+        Composant composant = (Composant) object.eContainer();
+        if (composant != null) {
+            long count = composant.getMetadonnees().stream()
+                .filter(m -> m.getCle() != null && m.getCle().equals(object.getCle()))
+                .count();
+            
+            this.result.recordIfFailed(
+                count == 1,
+                object,
+                "La clé '" + object.getCle() + "' est dupliquée dans le composant"
+            );
+        }
+        
+        return null;
+    }
+    
+    /**
+     * Validation d'un Port.
+     */
+    @Override
+    public Boolean casePort(Port object) {
+        // C4.1 : Nom non vide
+        this.result.recordIfFailed(
+            object.getName() != null && !object.getName().isEmpty(),
+            object,
+            "Le nom du port ne doit pas être vide"
+        );
+        
+        // C4.2 : Nom unique dans le composant
+        Composant composant = (Composant) object.eContainer();
+        if (composant != null) {
+            long count = composant.getPorts().stream()
+                .filter(p -> p.getName() != null && p.getName().equals(object.getNom()))
+                .count();
+            
+            this.result.recordIfFailed(
+                count == 1,
+                object,
+                "Le nom du port '" + object.getNom() + "' n'est pas unique dans le composant"
+            );
+        }
+        
+        // C4.3 : Coordonnées valides par rapport à l'empreinte
+        if (composant != null && composant.getEmpreinte() != null) {
+            Empreinte emp = composant.getEmpreinte();
+            
+            this.result.recordIfFailed(
+                object.getX() >= 0 && object.getX() <= emp.getLargeur(),
+                object,
+                "La coordonnée X du port doit être entre 0 et " + emp.getLargeur()
+            );
+            
+            this.result.recordIfFailed(
+                object.getY() >= 0 && object.getY() <= emp.getHauteur(),
+                object,
+                "La coordonnée Y du port doit être entre 0 et " + emp.getHauteur()
+            );
+        }
+        
+        // C4.4 : Noms standard pour alimentation/masse (warning, pas erreur)
+        if (object.getType() == TypePort.ALIMENTATION) {
+            boolean nomStandard = object.getNom().toUpperCase().matches("(VCC|VDD|V\\+|VBAT|VIN)");
+            if (!nomStandard) {
+                // Note: cette contrainte pourrait être un warning plutôt qu'une erreur
+                // Pour l'instant on ne la vérifie pas strictement
+            }
+        }
+        
+        return null;
+    }
+    
+    /**
+     * Validation d'une Empreinte.
+     */
+    @Override
+    public Boolean caseEmpreinte(Empreinte object) {
+        // C5.1 : Largeur > 0
+        this.result.recordIfFailed(
+            object.getLargeur() > 0,
+            object,
+            "La largeur de l'empreinte doit être strictement positive"
+        );
+        
+        // C5.2 : Hauteur > 0
+        this.result.recordIfFailed(
+            object.getHauteur() > 0,
+            object,
+            "La hauteur de l'empreinte doit être strictement positive"
+        );
+        
+        return null;
+    }
+    
+    /**
+     * Cas par défaut.
+     */
+    @Override
+    public Boolean defaultCase(EObject object) {
+        return null;
+    }
+}

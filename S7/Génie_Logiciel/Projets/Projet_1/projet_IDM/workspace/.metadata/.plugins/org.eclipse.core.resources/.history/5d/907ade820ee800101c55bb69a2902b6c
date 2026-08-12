@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="layout" nsURI="http://www.example.org/layout" nsPrefix="layout">
+  <eClassifiers xsi:type="ecore:EClass" name="Layout">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="boards" lowerBound="1"
+        upperBound="-1" eType="#//Board" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="netlist" lowerBound="1"
+        eType="ecore:EClass ../../fr.n7.idm.netlist/model/netlist.ecore#//Netlist"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Board">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="largeur" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hauteur" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="couches" lowerBound="2"
+        upperBound="-1" eType="#//Couche" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Couche" abstract="true" eSuperTypes="#//Coucheexterne #//Coucheinterne">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numero" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pistes" upperBound="-1"
+        eType="#//Piste" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Coucheexterne">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="composantPlaces" upperBound="-1"
+        eType="#//ComposantPlace" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Coucheinterne"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ComposantPlace">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rotation" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instance" lowerBound="1"
+        eType="ecore:EClass ../../fr.n7.idm.netlist/model/netlist.ecore#//InstanceComposant"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Piste">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="largeur" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="net" eType="ecore:EClass ../../fr.n7.idm.netlist/model/netlist.ecore#//Net"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="points" lowerBound="2"
+        upperBound="-1" eType="#//Point" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Point">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+</ecore:EPackage>

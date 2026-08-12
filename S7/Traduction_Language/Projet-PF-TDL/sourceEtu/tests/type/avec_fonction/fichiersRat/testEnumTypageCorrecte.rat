@@ -1,0 +1,9 @@
+enum Jour {Lundi, Mardi};
+test {
+  Jour j = Lundi;      // Correct (Enum Jour = Enum Jour)
+  if (j = Mardi) {     // Correct (Comparaison Enum Jour)
+    print j;           // Correct (Affichage Enum -> Int)
+  } else {
+    print 0;
+  }
+}

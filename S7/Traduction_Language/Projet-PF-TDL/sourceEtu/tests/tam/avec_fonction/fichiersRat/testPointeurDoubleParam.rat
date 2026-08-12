@@ -1,0 +1,13 @@
+int** creerDouble(int* p) {
+  int** pp = (new int*);
+  (*pp) = p;
+  return pp;
+}
+
+main {
+  int x = 42;
+  int* p = &x;
+  int** q = creerDouble(p);
+  int* temp = (*q) ;
+  print (*temp);
+}

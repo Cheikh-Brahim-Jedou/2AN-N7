@@ -1,0 +1,7 @@
+enum Couleur {Rouge, Vert, Bleu};
+
+test {
+  print Rouge; // Doit afficher 0
+  print Vert;  // Doit afficher 1
+  print Bleu;  // Doit afficher 2
+}

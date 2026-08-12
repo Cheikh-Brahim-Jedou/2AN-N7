@@ -1,0 +1,9 @@
+enum Jour {Lundi};
+enum Mois {Janvier};
+test {
+  if (Lundi = Janvier) { // Erreur : types incompatibles (Jour vs Mois)
+    print 1;
+  } else {
+    print 0;
+  }
+}

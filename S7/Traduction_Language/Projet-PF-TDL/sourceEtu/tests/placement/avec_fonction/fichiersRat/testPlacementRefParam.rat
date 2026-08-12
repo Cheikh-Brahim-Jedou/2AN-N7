@@ -1,0 +1,8 @@
+int f(ref int a){
+  return a;
+}
+
+main {
+  int x = 0;
+  int r = f(ref x);
+}
